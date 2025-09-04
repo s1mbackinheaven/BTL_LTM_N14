@@ -1,5 +1,7 @@
 package com.oop.game.server.protocol;
 
+import java.io.*;
+
 /**
  * Response đăng nhập từ server
  */
