@@ -1,0 +1,46 @@
+package com.oop.game.server.protocol;
+
+/**
+ * Response đăng nhập từ server
+ */
+public class LoginResponse extends Message {
+    private boolean success;
+    private String errorMessage;
+    private PlayerInfo playerInfo; // Thông tin người chơi nếu login thành công
+
+    public LoginResponse(String senderId, boolean success, String errorMessage, PlayerInfo playerInfo) {
+        super(MessageType.LOGIN_RESPONSE, senderId);
+        this.success = success;
+        this.errorMessage = errorMessage;
+        this.playerInfo = playerInfo;
+    }
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public PlayerInfo getPlayerInfo() {
+        return playerInfo;
+    }
+
+    /**
+     * Inner class chứa thông tin cơ bản của player
+     */
+    public static class PlayerInfo implements Serializable {
+        public final String username;
+        public final int elo;
+        public final int totalWins;
+        public final int totalLosses;
+
+        public PlayerInfo(String username, int elo, int totalWins, int totalLosses) {
+            this.username = username;
+            this.elo = elo;
+            this.totalWins = totalWins;
+            this.totalLosses = totalLosses;
+        }
+    }
+}
