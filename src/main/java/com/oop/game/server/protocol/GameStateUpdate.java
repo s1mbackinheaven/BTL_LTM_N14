@@ -1,5 +1,7 @@
 package com.oop.game.server.protocol;
 
+import com.oop.game.server.enums.MessageType;
+
 import java.util.List;
 
 /**
@@ -13,8 +15,8 @@ public class GameStateUpdate extends Message {
     private ColorBoardState boardState; // Trạng thái bảng màu (cho đoán màu)
 
     public GameStateUpdate(String serverName, String currentPlayerTurn,
-            PlayerGameState player1State, PlayerGameState player2State,
-            ColorBoardState boardState) {
+                           PlayerGameState player1State, PlayerGameState player2State,
+                           ColorBoardState boardState) {
         super(MessageType.GAME_STATE_UPDATE, serverName);
         this.currentPlayerTurn = currentPlayerTurn;
         this.player1State = player1State;
@@ -49,7 +51,7 @@ public class GameStateUpdate extends Message {
         public final boolean isMyTurn;
 
         public PlayerGameState(String username, int currentScore,
-                List<String> availablePowerUps, boolean isMyTurn) {
+                               List<String> availablePowerUps, boolean isMyTurn) {
             this.username = username;
             this.currentScore = currentScore;
             this.availablePowerUps = availablePowerUps;

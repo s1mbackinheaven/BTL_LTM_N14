@@ -1,8 +1,11 @@
 package com.oop.game.testing;
 
 import com.oop.game.server.core.*;
+import com.oop.game.server.enums.GameEndReason;
+import com.oop.game.server.enums.PowerUp;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -63,7 +66,6 @@ public class GameSessionTest {
     // assertFalse(player1.isMyTurn());
     // assertTrue(player2.isMyTurn());
     // }
-
     @Test
     void testNormalThrow() {
         // Dùng ZERO_FORCE để đảm bảo trúng đích
@@ -111,7 +113,7 @@ public class GameSessionTest {
         // Game kết thúc, player1 thắng
         assertTrue(gameSession.isGameEnded());
         assertEquals(player1, gameSession.getWinner());
-        assertEquals(GameSession.GameEndReason.REACH_TARGET_SCORE, gameSession.getEndReason());
+        assertEquals(GameEndReason.REACH_TARGET_SCORE, gameSession.getEndReason());
 
         // ELO được cập nhật
         assertEquals(137, player1.getElo()); // +101
@@ -132,7 +134,7 @@ public class GameSessionTest {
         // Game kết thúc, player1 thắng
         assertTrue(gameSession.isGameEnded());
         assertEquals(player1, gameSession.getWinner());
-        assertEquals(GameSession.GameEndReason.OPPONENT_LEFT, gameSession.getEndReason());
+        assertEquals(GameEndReason.OPPONENT_LEFT, gameSession.getEndReason());
 
         // ELO: thắng +51, thua -36
         assertEquals(87, player1.getElo());
@@ -188,7 +190,7 @@ public class GameSessionTest {
     @Test
     void testCannotThrowAfterGameEnd() {
         // Kết thúc game
-        gameSession.endGame(player1, GameSession.GameEndReason.REACH_TARGET_SCORE);
+        gameSession.endGame(player1, GameEndReason.REACH_TARGET_SCORE);
 
         // Thử ném sẽ throw exception
         assertThrows(IllegalStateException.class, () -> {

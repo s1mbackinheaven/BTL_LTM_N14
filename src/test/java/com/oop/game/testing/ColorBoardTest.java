@@ -1,8 +1,10 @@
 package com.oop.game.testing;
 
 import com.oop.game.server.core.ColorBoard;
+import com.oop.game.server.enums.Color;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -22,11 +24,11 @@ public class ColorBoardTest {
      */
     @Test
     void testDefaultPositions() {
-        assertEquals(ColorBoard.Color.WHITE, colorBoard.getColorAt(0, 1));
-        assertEquals(ColorBoard.Color.BLUE, colorBoard.getColorAt(0, -1));
-        assertEquals(ColorBoard.Color.RED, colorBoard.getColorAt(0, 0));
-        assertEquals(ColorBoard.Color.YELLOW, colorBoard.getColorAt(1, 0));
-        assertEquals(ColorBoard.Color.PURPLE, colorBoard.getColorAt(-1, 0));
+        assertEquals(Color.WHITE, colorBoard.getColorAt(0, 1));
+        assertEquals(Color.BLUE, colorBoard.getColorAt(0, -1));
+        assertEquals(Color.RED, colorBoard.getColorAt(0, 0));
+        assertEquals(Color.YELLOW, colorBoard.getColorAt(1, 0));
+        assertEquals(Color.PURPLE, colorBoard.getColorAt(-1, 0));
     }
 
     /**
@@ -34,11 +36,11 @@ public class ColorBoardTest {
      */
     @Test
     void testColorScores() {
-        assertEquals(1, ColorBoard.Color.WHITE.getScore());
-        assertEquals(2, ColorBoard.Color.BLUE.getScore());
-        assertEquals(5, ColorBoard.Color.RED.getScore());
-        assertEquals(4, ColorBoard.Color.YELLOW.getScore());
-        assertEquals(3, ColorBoard.Color.PURPLE.getScore());
+        assertEquals(1, Color.WHITE.getScore());
+        assertEquals(2, Color.BLUE.getScore());
+        assertEquals(5, Color.RED.getScore());
+        assertEquals(4, Color.YELLOW.getScore());
+        assertEquals(3, Color.PURPLE.getScore());
     }
 
     /**
@@ -58,15 +60,15 @@ public class ColorBoardTest {
     @Test
     void testSwapColors() {
         // Trước khi hoán đổi
-        assertEquals(ColorBoard.Color.WHITE, colorBoard.getColorAt(0, 1));
-        assertEquals(ColorBoard.Color.RED, colorBoard.getColorAt(0, 0));
+        assertEquals(Color.WHITE, colorBoard.getColorAt(0, 1));
+        assertEquals(Color.RED, colorBoard.getColorAt(0, 0));
 
         // Hoán đổi WHITE và RED
-        colorBoard.swapColors(ColorBoard.Color.WHITE, ColorBoard.Color.RED);
+        colorBoard.swapColors(Color.WHITE, Color.RED);
 
-        // Sau khi hoán đổi
-        assertEquals(ColorBoard.Color.RED, colorBoard.getColorAt(0, 1));
-        assertEquals(ColorBoard.Color.WHITE, colorBoard.getColorAt(0, 0));
+        // Sau khi hon đổi
+        assertEquals(Color.RED, colorBoard.getColorAt(0, 1));
+        assertEquals(Color.WHITE, colorBoard.getColorAt(0, 0));
 
         // Điểm số vẫn theo màu, không theo vị trí
         assertEquals(5, colorBoard.getScoreAt(0, 1)); // RED = 3 điểm
@@ -79,7 +81,7 @@ public class ColorBoardTest {
     @Test
     void testRevealOnlyThreeColors() {
         // Ban đầu tất cả màu đều hiện
-        for (ColorBoard.Color color : ColorBoard.Color.values()) {
+        for (Color color : Color.values()) {
             assertTrue(colorBoard.isColorVisible(color));
         }
 
@@ -88,7 +90,7 @@ public class ColorBoardTest {
 
         // Chỉ có đúng 3 màu được hiện
         int visibleCount = 0;
-        for (ColorBoard.Color color : ColorBoard.Color.values()) {
+        for (Color color : Color.values()) {
             if (colorBoard.isColorVisible(color)) {
                 visibleCount++;
             }
@@ -108,7 +110,7 @@ public class ColorBoardTest {
         colorBoard.resetVisibility();
 
         // Kiểm tra tất cả màu đều hiện
-        for (ColorBoard.Color color : ColorBoard.Color.values()) {
+        for (Color color : Color.values()) {
             assertTrue(colorBoard.isColorVisible(color),
                     "Màu " + color + " phải được hiện sau reset");
         }
@@ -123,7 +125,7 @@ public class ColorBoardTest {
         colorBoard.revealOnlyThreeColors();
 
         // Kiểm tra màu ẩn trả về null
-        for (ColorBoard.Color color : ColorBoard.Color.values()) {
+        for (Color color : Color.values()) {
             if (!colorBoard.isColorVisible(color)) {
                 ColorBoard.Point pos = colorBoard.getCurrentPosition(color);
                 assertNull(colorBoard.getColorAt(pos.x, pos.y));
@@ -139,7 +141,7 @@ public class ColorBoardTest {
     void testSwapRandomColors() {
         // Lưu vị trí ban đầu
         ColorBoard.Point[] originalPositions = new ColorBoard.Point[5];
-        ColorBoard.Color[] colors = ColorBoard.Color.values();
+        Color[] colors = Color.values();
         for (int i = 0; i < colors.length; i++) {
             originalPositions[i] = colorBoard.getCurrentPosition(colors[i]);
         }

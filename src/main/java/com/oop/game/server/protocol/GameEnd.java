@@ -1,5 +1,7 @@
 package com.oop.game.server.protocol;
 
+import com.oop.game.server.enums.MessageType;
+
 /**
  * Thông báo kết thúc trận đấu
  */
@@ -12,8 +14,8 @@ public class GameEnd extends Message {
     private int eloChangeLoser;
 
     public GameEnd(String serverName, String winner, String reason,
-            int finalScoreWinner, int finalScoreLoser,
-            int eloChangeWinner, int eloChangeLoser) {
+                   int finalScoreWinner, int finalScoreLoser,
+                   int eloChangeWinner, int eloChangeLoser) {
         super(MessageType.GAME_END, serverName);
         this.winner = winner;
         this.reason = reason;

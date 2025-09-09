@@ -1,5 +1,8 @@
 package com.oop.game.server.core;
 
+import com.oop.game.server.enums.GameEndReason;
+import com.oop.game.server.enums.PowerUp;
+
 import java.util.*;
 
 /**
@@ -53,7 +56,7 @@ public class GameSession {
 
     /**
      * Xử lý 1 lượt ném của người chơi hiện tại
-     * 
+     *
      * @param playerX     tọa độ X nhập vào
      * @param playerY     tọa độ Y nhập vào
      * @param usedPowerUp phụ trợ sử dụng (có thể null)
@@ -250,11 +253,4 @@ public class GameSession {
         return endReason;
     }
 
-    /**
-     * Enum lý do kết thúc game
-     */
-    public enum GameEndReason {
-        REACH_TARGET_SCORE, // Đạt 16 điểm
-        OPPONENT_LEFT // Đối thủ rời trận
-    }
 }

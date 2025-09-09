@@ -1,8 +1,10 @@
 package com.oop.game.testing;
 
 import com.oop.game.server.core.*;
+import com.oop.game.server.enums.PowerUp;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -75,7 +77,7 @@ public class GameEngineTest {
      */
     @Test
     void testDoubleScorePowerUp() {
-        PowerUp[] powerUps = { PowerUp.DOUBLE_SCORE };
+        PowerUp[] powerUps = {PowerUp.DOUBLE_SCORE};
 
         GameEngine.ThrowResult result = GameEngine.processThrow(
                 0, 0, 0, colorBoard, powerUps, false);
@@ -89,7 +91,7 @@ public class GameEngineTest {
      */
     @Test
     void testZeroForcePowerUp() {
-        PowerUp[] powerUps = { PowerUp.ZERO_FORCE };
+        PowerUp[] powerUps = {PowerUp.ZERO_FORCE};
 
         // Với ZERO_FORCE, lực đẩy sẽ = 0 dù random ra bao nhiêu
         GameEngine.ThrowResult result = GameEngine.processThrow(
@@ -106,7 +108,7 @@ public class GameEngineTest {
      */
     @Test
     void testHalfOpponentNextPowerUp() {
-        PowerUp[] powerUps = { PowerUp.HALF_OPPONENT_NEXT };
+        PowerUp[] powerUps = {PowerUp.HALF_OPPONENT_NEXT};
 
         // Test với isOpponentTurn = true
         GameEngine.ThrowResult result = GameEngine.processThrow(
@@ -121,7 +123,7 @@ public class GameEngineTest {
      */
     @Test
     void testExtraTurnPowerUp() {
-        PowerUp[] powerUps = { PowerUp.EXTRA_TURN };
+        PowerUp[] powerUps = {PowerUp.EXTRA_TURN};
 
         GameEngine.ThrowResult result = GameEngine.processThrow(
                 0, 1, 0, colorBoard, powerUps, false);
@@ -135,7 +137,7 @@ public class GameEngineTest {
      */
     @Test
     void testMultiplePowerUps() {
-        PowerUp[] powerUps = { PowerUp.DOUBLE_SCORE, PowerUp.EXTRA_TURN };
+        PowerUp[] powerUps = {PowerUp.DOUBLE_SCORE, PowerUp.EXTRA_TURN};
 
         GameEngine.ThrowResult result = GameEngine.processThrow(
                 -1, 0, 0, colorBoard, powerUps, false);

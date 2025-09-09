@@ -1,5 +1,7 @@
 package com.oop.game.server.protocol;
 
+import com.oop.game.server.enums.MessageType;
+
 /**
  * Thông báo lỗi từ server
  */

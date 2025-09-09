@@ -1,7 +1,10 @@
 package com.oop.game.testing;
 
 import com.oop.game.server.core.*;
+import com.oop.game.server.enums.GameEndReason;
+import com.oop.game.server.enums.PowerUp;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -49,7 +52,7 @@ public class IntegrationTest {
         assertNotNull(game.getWinner());
 
         // Người thắng phải có >= 16 điểm hoặc đối thủ rời trận
-        if (game.getEndReason() == GameSession.GameEndReason.REACH_TARGET_SCORE) {
+        if (game.getEndReason() == GameEndReason.REACH_TARGET_SCORE) {
             assertTrue(game.getWinner().getCurrentScore() >= 16);
         }
 
@@ -107,7 +110,7 @@ public class IntegrationTest {
         Player loser = new Player("Loser");
         GameSession game1 = new GameSession(winner, loser);
 
-        game1.endGame(winner, GameSession.GameEndReason.REACH_TARGET_SCORE);
+        game1.endGame(winner, GameEndReason.REACH_TARGET_SCORE);
         assertEquals(137, winner.getElo());
         assertEquals(0, loser.getElo());
         assertEquals(1, winner.getTotalWins());

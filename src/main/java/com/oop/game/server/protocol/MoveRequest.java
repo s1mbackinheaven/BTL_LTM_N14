@@ -1,6 +1,7 @@
 package com.oop.game.server.protocol;
 
-import com.oop.game.server.core.PowerUp;
+import com.oop.game.server.enums.MessageType;
+import com.oop.game.server.enums.PowerUp;
 
 /**
  * Request gửi nước đi từ client

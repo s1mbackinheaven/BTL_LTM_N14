@@ -1,5 +1,7 @@
 package com.oop.game.server.protocol;
 
+import com.oop.game.server.enums.MessageType;
+
 /**
  * Kết quả nước đi từ server
  */
@@ -13,7 +15,7 @@ public class MoveResult extends Message {
     private boolean canSwapColor; // Có được đổi màu không (khi trúng)
 
     public MoveResult(String serverName, int finalX, int finalY, String hitColor,
-            int scoreGained, int currentScore, int force, boolean hasExtraTurn, boolean canSwapColor) {
+                      int scoreGained, int currentScore, int force, boolean hasExtraTurn, boolean canSwapColor) {
         super(MessageType.MOVE_RESULT, serverName);
         this.finalX = finalX;
         this.finalY = finalY;

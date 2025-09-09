@@ -1,5 +1,7 @@
 package com.oop.game.server.core;
 
+import com.oop.game.server.enums.PowerUp;
+
 import java.util.List;
 import java.util.ArrayList;
 

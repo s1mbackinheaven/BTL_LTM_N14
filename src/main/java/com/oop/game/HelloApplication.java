@@ -1,6 +1,5 @@
 package com.oop.game;
 
-import com.oop.game.server.Config;
 import com.oop.game.server.db.DAO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -21,8 +20,8 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
-        try {
-            Connection con = DAO.getConnection();
+        try (Connection con = DAO.getConnection()) {
+
         } catch (Exception e) {
             e.printStackTrace();
         }

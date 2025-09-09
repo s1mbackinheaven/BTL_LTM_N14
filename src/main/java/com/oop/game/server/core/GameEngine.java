@@ -2,6 +2,9 @@ package com.oop.game.server.core;
 
 import java.util.Random;
 
+import com.oop.game.server.enums.Color;
+import com.oop.game.server.enums.PowerUp;
+
 /**
  * Engine xử lý logic 1 lượt ném phi tiêu
  * Stateless - chỉ nhận input và trả output, không lưu trạng thái
@@ -11,7 +14,7 @@ public class GameEngine {
 
     /**
      * Xử lý 1 lượt ném hoàn chỉnh
-     * 
+     *
      * @param playerX        tọa độ X người chơi nhập
      * @param playerY        tọa độ Y người chơi nhập
      * @param force          lực đẩy f (đã được random từ -3 đến 3)
@@ -21,9 +24,9 @@ public class GameEngine {
      * @return kết quả lượt ném
      */
     public static ThrowResult processThrow(int playerX, int playerY, int force,
-            ColorBoard colorBoard,
-            PowerUp[] activePowerUps,
-            boolean isOpponentTurn) {
+                                           ColorBoard colorBoard,
+                                           PowerUp[] activePowerUps,
+                                           boolean isOpponentTurn) {
 
         // Áp dụng phụ trợ ZERO_FORCE nếu có
         int actualForce = force;
@@ -39,7 +42,7 @@ public class GameEngine {
         int finalY = calculateFinalY(playerY, playerX, actualForce);
 
         // Xác định màu trúng và điểm gốc
-        ColorBoard.Color hitColor = colorBoard.getColorAt(finalX, finalY);
+        Color hitColor = colorBoard.getColorAt(finalX, finalY);
         int baseScore = hitColor != null ? hitColor.getScore() : 0;
 
         // Áp dụng phụ trợ ảnh hưởng điểm số
@@ -110,13 +113,13 @@ public class GameEngine {
      */
     public static class ThrowResult {
         public final int finalX, finalY;
-        public final ColorBoard.Color hitColor;
+        public final Color hitColor;
         public final int baseScore;
         public final int finalScore;
         public final boolean hasExtraTurn;
 
-        public ThrowResult(int finalX, int finalY, ColorBoard.Color hitColor,
-                int baseScore, int finalScore, boolean hasExtraTurn) {
+        public ThrowResult(int finalX, int finalY, Color hitColor,
+                           int baseScore, int finalScore, boolean hasExtraTurn) {
             this.finalX = finalX;
             this.finalY = finalY;
             this.hitColor = hitColor;
