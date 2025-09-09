@@ -4,9 +4,9 @@ import java.sql.Timestamp;
 
 public class Match {
     private int id;
-    private String player1Username;
-    private String player2Username;
-    private String winnerUsername;
+    private int player1Id;
+    private int player2Id;
+    private int winnerId;
     private int player1Score;
     private int player2Score;
     private int eloChange;
@@ -16,20 +16,20 @@ public class Match {
     public Match() {
     }
 
-    public Match(String player1Username, String player2Username) {
-        this.player1Username = player1Username;
-        this.player2Username = player2Username;
+    public Match(int player1Id, int player2Id) {
+        this.player1Id = player1Id;
+        this.player2Id = player2Id;
         this.player1Score = 0;
         this.player2Score = 0;
         this.eloChange = 0;
     }
 
-    public Match(int id, String player1Username, String player2Username, String winnerUsername,
-                 int player1Score, int player2Score, int eloChange, Timestamp playedAt) {
+    public Match(int id, int player1Id, int player2Id, int winnerId,
+            int player1Score, int player2Score, int eloChange, Timestamp playedAt) {
         this.id = id;
-        this.player1Username = player1Username;
-        this.player2Username = player2Username;
-        this.winnerUsername = winnerUsername;
+        this.player1Id = player1Id;
+        this.player2Id = player2Id;
+        this.winnerId = winnerId;
         this.player1Score = player1Score;
         this.player2Score = player2Score;
         this.eloChange = eloChange;
@@ -41,16 +41,16 @@ public class Match {
         return id;
     }
 
-    public String getPlayer1Username() {
-        return player1Username;
+    public int getPlayer1Id() {
+        return player1Id;
     }
 
-    public String getPlayer2Username() {
-        return player2Username;
+    public int getPlayer2Id() {
+        return player2Id;
     }
 
-    public String getWinnerUsername() {
-        return winnerUsername;
+    public int getWinnerId() {
+        return winnerId;
     }
 
     public int getPlayer1Score() {
@@ -74,16 +74,16 @@ public class Match {
         this.id = id;
     }
 
-    public void setPlayer1Username(String player1Username) {
-        this.player1Username = player1Username;
+    public void setPlayer1Id(int player1Id) {
+        this.player1Id = player1Id;
     }
 
-    public void setPlayer2Username(String player2Username) {
-        this.player2Username = player2Username;
+    public void setPlayer2Id(int player2Id) {
+        this.player2Id = player2Id;
     }
 
-    public void setWinnerUsername(String winnerUsername) {
-        this.winnerUsername = winnerUsername;
+    public void setWinnerId(int winnerId) {
+        this.winnerId = winnerId;
     }
 
     public void setPlayer1Score(int player1Score) {

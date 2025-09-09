@@ -21,18 +21,10 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
-        System.out.println("Starting HelloApplication...");
-
-        // Test database connection (optional)
         try {
             Connection con = DAO.getConnection();
-            System.out.println("Database connected successfully!");
-            con.close();
         } catch (Exception e) {
-            System.err.println("Database connection failed: " + e.getMessage());
+            e.printStackTrace();
         }
-
-        // Launch JavaFX application
-        launch(args);
     }
 }
