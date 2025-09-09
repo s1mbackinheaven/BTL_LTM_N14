@@ -1,1 +1,1 @@
-mvn exec:java -Dexec.mainClass="com.oop.game.HelloApplication"
+mvn clean compile exec:java -Dexec.mainClass="com.oop.game.HelloApplication" -Dexec.args="--add-exports javafx.base/com.sun.javafx.runtime=ALL-UNNAMED"
