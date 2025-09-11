@@ -1,7 +1,7 @@
-package com.oop.game.server.protocol;
+package com.oop.game.server.protocol.response;
 
-import com.oop.game.server.core.Player;
 import com.oop.game.server.enums.MessageType;
+import com.oop.game.server.protocol.Message;
 
 import java.io.*;
 
@@ -13,11 +13,11 @@ public class LoginResponse extends Message {
     private String errorMessage;
     private PlayerInfo playerInfo; // Thông tin người chơi nếu login thành công
 
-    public LoginResponse(boolean success, String errorMessage, Player player) {
-        super(MessageType.LOGIN_RESPONSE, null);
+    public LoginResponse(String senderId, boolean success, String errorMessage, PlayerInfo playerInfo) {
+        super(MessageType.LOGIN_RESPONSE, senderId);
         this.success = success;
         this.errorMessage = errorMessage;
-        this.playerInfo = new PlayerInfo(player);
+        this.playerInfo = playerInfo;
     }
 
     public boolean isSuccess() {
@@ -35,18 +35,17 @@ public class LoginResponse extends Message {
     /**
      * Inner class chứa thông tin cơ bản của player
      */
-    private class PlayerInfo implements Serializable {
+    public static class PlayerInfo implements Serializable {
         public final String username;
         public final int elo;
         public final int totalWins;
         public final int totalLosses;
 
-
-        public PlayerInfo(Player player) {
-            this.username = player.getUsername();
-            this.elo = player.getElo();
-            this.totalLosses = player.getTotalLosses();
-            this.totalWins = player.getTotalWins();
+        public PlayerInfo(String username, int elo, int totalWins, int totalLosses) {
+            this.username = username;
+            this.elo = elo;
+            this.totalWins = totalWins;
+            this.totalLosses = totalLosses;
         }
     }
 }
