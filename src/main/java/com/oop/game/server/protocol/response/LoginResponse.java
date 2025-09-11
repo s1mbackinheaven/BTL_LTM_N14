@@ -1,6 +1,7 @@
-package com.oop.game.server.protocol;
+package com.oop.game.server.protocol.response;
 
-import java.io.*;
+import com.oop.game.server.protocol.Message;
+import com.oop.game.server.dto.PlayerInfo;
 
 /**
  * Response đăng nhập từ server
@@ -27,22 +28,5 @@ public class LoginResponse extends Message {
 
     public PlayerInfo getPlayerInfo() {
         return playerInfo;
-    }
-
-    /**
-     * Inner class chứa thông tin cơ bản của player
-     */
-    public static class PlayerInfo implements Serializable {
-        public final String username;
-        public final int elo;
-        public final int totalWins;
-        public final int totalLosses;
-
-        public PlayerInfo(String username, int elo, int totalWins, int totalLosses) {
-            this.username = username;
-            this.elo = elo;
-            this.totalWins = totalWins;
-            this.totalLosses = totalLosses;
-        }
     }
 }
