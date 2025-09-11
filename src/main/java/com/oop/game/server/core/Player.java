@@ -1,6 +1,7 @@
 package com.oop.game.server.core;
 
 import com.oop.game.server.enums.PowerUp;
+import com.oop.game.server.models.User;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -29,6 +30,19 @@ public class Player {
         this.totalLosses = 0;
         this.isOnline = true;
         this.isBusy = false;
+        this.currentScore = 0;
+        this.availablePowerUps = new ArrayList<>();
+        this.isMyTurn = false;
+    }
+
+    public Player(User u) {
+        this.username = u.getUsername();
+        this.elo = u.getElo();
+        this.totalLosses = u.getTotalLosses();
+        this.totalWins = u.getTotalWins();
+        this.isOnline = true;
+        this.isBusy = false;
+
         this.currentScore = 0;
         this.availablePowerUps = new ArrayList<>();
         this.isMyTurn = false;
@@ -110,5 +124,17 @@ public class Player {
 
     public void setMyTurn(boolean myTurn) {
         this.isMyTurn = myTurn;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+
+        if (!(o instanceof Player))
+            return false;
+
+        Player p = (Player) o;
+        return this.username == p.username;
     }
 }

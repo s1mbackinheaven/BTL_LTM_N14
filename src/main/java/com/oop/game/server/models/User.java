@@ -25,7 +25,7 @@ public class User {
     }
 
     public User(int id, String username, String password, int elo, int totalWins, int totalLosses,
-                Timestamp createdAt) {
+            Timestamp createdAt) {
         this.id = id;
         this.username = username;
         this.password = password;

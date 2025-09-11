@@ -36,4 +36,5 @@ public class ErrorMessage extends Message {
     public static final String GAME_NOT_FOUND = "GAME_NOT_FOUND";
     public static final String INVALID_MOVE = "INVALID_MOVE";
     public static final String NOT_YOUR_TURN = "NOT_YOUR_TURN";
+
 }

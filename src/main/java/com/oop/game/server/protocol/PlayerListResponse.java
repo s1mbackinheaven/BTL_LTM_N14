@@ -1,36 +1,24 @@
 package com.oop.game.server.protocol;
 
+import com.oop.game.server.core.Player;
 import com.oop.game.server.enums.MessageType;
 
 import java.util.List;
 
 /**
- * Danh sách người chơi online
+ * Danh sách người chơi
  */
+
 public class PlayerListResponse extends Message {
-    private List<OnlinePlayer> onlinePlayers;
+    private List<Player> players;
 
-    public PlayerListResponse(String serverName, List<OnlinePlayer> onlinePlayers) {
+    public PlayerListResponse(String serverName, List<Player> players) {
         super(MessageType.PLAYER_LIST_RESPONSE, serverName);
-        this.onlinePlayers = onlinePlayers;
+        this.players = players;
     }
 
-    public List<OnlinePlayer> getOnlinePlayers() {
-        return onlinePlayers;
+    public List<Player> getPlayers() {
+        return players;
     }
 
-    /**
-     * Thông tin người chơi online
-     */
-    public static class OnlinePlayer implements java.io.Serializable {
-        public final String username;
-        public final int elo;
-        public final boolean isBusy; // Đang trong trận hay không
-
-        public OnlinePlayer(String username, int elo, boolean isBusy) {
-            this.username = username;
-            this.elo = elo;
-            this.isBusy = isBusy;
-        }
-    }
 }

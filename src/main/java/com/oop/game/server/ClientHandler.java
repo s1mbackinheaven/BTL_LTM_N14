@@ -1,13 +1,15 @@
 package com.oop.game.server;
 
-import com.oop.game.server.protocol.InviteRequest;
-import com.oop.game.server.protocol.LoginRequest;
-import com.oop.game.server.protocol.MoveRequest;
-import com.oop.game.server.protocol.PlayerListRequest;
+import com.oop.game.server.core.Player;
+import com.oop.game.server.db.UserDAO;
+import com.oop.game.server.managers.ClientManager;
+import com.oop.game.server.models.User;
+import com.oop.game.server.protocol.*;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.lang.Runnable;
 import java.net.Socket;
 
 public class ClientHandler implements Runnable {
@@ -26,6 +28,7 @@ public class ClientHandler implements Runnable {
                 try {
                     Object msg = input.readObject();
 
+                    handlerMes(msg, output);
                     // xử lý req
 
                 } catch (ClassNotFoundException e) {
@@ -60,6 +63,57 @@ public class ClientHandler implements Runnable {
 
     private void handlerLoginReq(LoginRequest req, ObjectOutputStream objOP) {
 
+        UserDAO ud = new UserDAO();
+
+        String un = req.getUsername();
+        String pw = req.getPassword();
+
+        if (un == null || pw == null) {
+
+            LoginResponse res = new LoginResponse(false, "vui lòng ghi đủ thông tin", null);
+
+            try {
+
+                objOP.writeObject(res);
+                objOP.flush();
+
+                return;
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        // check user
+        boolean isUser = ud.authenticateUser(un, pw);
+        ClientManager mClient = ClientManager.getInstance();
+
+        if (isUser) {
+
+            Player player = new Player(un);
+
+            if (mClient.isOnline(player)) {
+                LoginResponse res = new LoginResponse(false, "đã được đăng nhập ở nơi khác", null);
+
+                try {
+
+                    objOP.writeObject(res);
+                    objOP.flush();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+
+                User u = ud.getUserByUsername(un);
+                Player player = new Player(u);
+
+                LoginResponse res = new LoginResponse(true, "Login suscess", oPlayer);
+            }
+        } else {
+
+        }
+
     }
 
     private void handlerMoveReq(MoveRequest req, ObjectOutputStream objOP) {
@@ -70,7 +124,6 @@ public class ClientHandler implements Runnable {
 
     private void handlerInviteReq(InviteRequest obj, ObjectOutputStream objOP) {
     }
-
 
     public String toString() {
         return socket.toString();
