@@ -28,7 +28,7 @@ public class ClientConnectionManager {
 
     /**
      * Đăng ký kết nối của client
-     *
+     * 
      * @param username     Tên người chơi
      * @param outputStream Output stream của client
      */
@@ -39,7 +39,7 @@ public class ClientConnectionManager {
 
     /**
      * Hủy đăng ký kết nối của client
-     *
+     * 
      * @param username Tên người chơi
      */
     public void unregisterClient(String username) {
@@ -49,7 +49,7 @@ public class ClientConnectionManager {
 
     /**
      * Gửi message đến client cụ thể
-     *
+     * 
      * @param username Tên người chơi nhận message
      * @param message  Message cần gửi
      * @return true nếu gửi thành công, false nếu thất bại
@@ -76,7 +76,7 @@ public class ClientConnectionManager {
 
     /**
      * Gửi message đến nhiều client
-     *
+     * 
      * @param usernames Danh sách tên người chơi
      * @param message   Message cần gửi
      * @return Số lượng client nhận được message thành công
@@ -93,7 +93,7 @@ public class ClientConnectionManager {
 
     /**
      * Kiểm tra client có đang kết nối không
-     *
+     * 
      * @param username Tên người chơi
      * @return true nếu đang kết nối
      */
@@ -103,7 +103,7 @@ public class ClientConnectionManager {
 
     /**
      * Lấy số lượng client đang kết nối
-     *
+     * 
      * @return Số lượng client
      */
     public int getConnectedClientCount() {
