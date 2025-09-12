@@ -1,5 +1,6 @@
-package com.oop.game.server.db;
+package com.oop.game.server.DAO;
 
+import com.oop.game.server.DAO.DAO;
 import com.oop.game.server.models.Match;
 
 import java.sql.*;
@@ -12,7 +13,7 @@ public class MatchDAO extends DAO {
         String sql = "INSERT INTO matches (player1_id, player2_id, player1_score, player2_score, elo_change) VALUES (?, ?, 0, 0, 0)";
 
         try (Connection con = getConnection();
-                PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             ps.setInt(1, player1Id);
             ps.setInt(2, player2Id);
@@ -36,7 +37,7 @@ public class MatchDAO extends DAO {
         String sql = "UPDATE matches SET winner_id = ?, player1_score = ?, player2_score = ?, elo_change = ?, played_at = CURRENT_TIMESTAMP WHERE id = ?";
 
         try (Connection con = getConnection();
-                PreparedStatement ps = con.prepareStatement(sql)) {
+             PreparedStatement ps = con.prepareStatement(sql)) {
 
             Match match = getMatchById(matchId);
             if (match == null) {
@@ -69,7 +70,7 @@ public class MatchDAO extends DAO {
         String sql = "UPDATE matches SET winner_id = ?, player1_score = ?, player2_score = ?, elo_change = 51, played_at = CURRENT_TIMESTAMP WHERE id = ?";
 
         try (Connection con = getConnection();
-                PreparedStatement ps = con.prepareStatement(sql)) {
+             PreparedStatement ps = con.prepareStatement(sql)) {
 
             // Get match to determine players
             Match match = getMatchById(matchId);
@@ -106,7 +107,7 @@ public class MatchDAO extends DAO {
         String sql = "SELECT * FROM matches WHERE id = ?";
 
         try (Connection con = getConnection();
-                PreparedStatement ps = con.prepareStatement(sql)) {
+             PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, matchId);
 
@@ -127,7 +128,7 @@ public class MatchDAO extends DAO {
         String sql = "SELECT * FROM matches WHERE player1_id = ? OR player2_id = ? ORDER BY played_at DESC";
 
         try (Connection con = getConnection();
-                PreparedStatement ps = con.prepareStatement(sql)) {
+             PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, playerId);
             ps.setInt(2, playerId);
@@ -149,7 +150,7 @@ public class MatchDAO extends DAO {
         String sql = "SELECT * FROM matches WHERE winner_id IS NOT NULL ORDER BY played_at DESC LIMIT ?";
 
         try (Connection con = getConnection();
-                PreparedStatement ps = con.prepareStatement(sql)) {
+             PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, limit);
 
@@ -169,8 +170,8 @@ public class MatchDAO extends DAO {
         String sql = "SELECT COUNT(*) FROM matches WHERE winner_id IS NOT NULL";
 
         try (Connection con = getConnection();
-                PreparedStatement ps = con.prepareStatement(sql);
-                ResultSet rs = ps.executeQuery()) {
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
 
             if (rs.next()) {
                 return rs.getInt(1);

@@ -5,27 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31c5998e-355f-4adf-a9d1-bbf289ed1706" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/INVITATION_GUIDE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/INVITATION_SUMMARY.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/db/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/DAO/DAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/db/MatchDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/DAO/MatchDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/db/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/DAO/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/db/save.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/dto/PlayerInfoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/dto/PlayerInfoDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/managers/ClientManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/managers/ClientManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/ErrorMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/ErrorMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/GameStateUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/GameStateUpdate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/request/InviteRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/request/InviteRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/request/LeaderboardRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/request/LeaderboardRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/request/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/request/LoginRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/request/MoveRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/request/MoveRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/request/PlayerListRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/request/PlayerListRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/response/InviteResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/response/InviteResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/response/LoginResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/response/LoginResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/response/PlayerListResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/response/PlayerListResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/demo/InvitationDemo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/GameStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/GameStart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/util/save.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/sql/save.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

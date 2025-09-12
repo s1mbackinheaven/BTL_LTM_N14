@@ -1,6 +1,7 @@
 package com.oop.game.server.protocol;
 
 import com.oop.game.server.enums.MessageType;
+import com.oop.game.server.enums.PowerUp;
 
 import java.util.List;
 
@@ -9,10 +10,10 @@ import java.util.List;
  */
 public class GameStart extends Message {
     private String opponent; // Tên đối thủ
-    private List<String> myPowerUps; // 3 phụ trợ của mình
+    private List<PowerUp> myPowerUps; // 3 phụ trợ của mình
     private boolean isFirstPlayer; // Có ném trước không
 
-    public GameStart(String serverName, String opponent, List<String> myPowerUps, boolean isFirstPlayer) {
+    public GameStart(String serverName, String opponent, List<PowerUp> myPowerUps, boolean isFirstPlayer) {
         super(MessageType.GAME_START, serverName);
         this.opponent = opponent;
         this.myPowerUps = myPowerUps;
@@ -23,7 +24,7 @@ public class GameStart extends Message {
         return opponent;
     }
 
-    public List<String> getMyPowerUps() {
+    public List<PowerUp> getMyPowerUps() {
         return myPowerUps;
     }
 

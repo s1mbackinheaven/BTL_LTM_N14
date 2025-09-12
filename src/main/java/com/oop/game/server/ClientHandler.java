@@ -5,6 +5,7 @@ import com.oop.game.server.DAO.UserDAO;
 import com.oop.game.server.managers.ClientManager;
 import com.oop.game.server.models.User;
 import com.oop.game.server.protocol.ErrorMessage;
+import com.oop.game.server.protocol.GameStart;
 import com.oop.game.server.protocol.request.LoginRequest;
 import com.oop.game.server.protocol.Message;
 import com.oop.game.server.protocol.request.InviteRequest;
@@ -38,7 +39,7 @@ public class ClientHandler implements Runnable {
     @Override
     public void run() {
         try (ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
-                ObjectInputStream input = new ObjectInputStream(socket.getInputStream())) {
+             ObjectInputStream input = new ObjectInputStream(socket.getInputStream())) {
 
             while (true) {
                 try {
@@ -77,6 +78,8 @@ public class ClientHandler implements Runnable {
         } else if (obj instanceof InviteRequest) {
             // lời mời thách đấu
             handlerInviteReq((InviteRequest) obj, objOP);
+        } else if (obj instanceof InviteResponse) {
+            handlerInviteResponse((InviteResponse) obj, objOP);
         } else if (obj instanceof PlayerListRequest) {
             // danh sách người chơi online
             handlerPlayerListReq((PlayerListRequest) obj, objOP);
@@ -184,6 +187,7 @@ public class ClientHandler implements Runnable {
     }
 
     private void handlerInviteResponse(InviteResponse response, ObjectOutputStream objOP) {
+
         String responderUN = response.getSenderUN();
         String inviterUN = response.getInviterUsername();
         boolean accepted = response.isAccepted();
@@ -211,15 +215,15 @@ public class ClientHandler implements Runnable {
 
             // Tạo trận đấu mới
             try {
-                String sessionId = gameSessionManager.createGameSession(inviter, responder);
-
-                // Gửi thông báo bắt đầu game cho cả 2 người chơi
-                // TODO: Tạo GAME_START message và gửi đến cả 2 client
-                System.out.println("🎮 Trận đấu bắt đầu giữa " + inviterUN + " và " + responderUN + " (Session: "
-                        + sessionId + ")");
 
                 // Gửi response xác nhận cho người phản hồi
                 OP(new InviteResponse(responderUN, inviterUN, true), objOP);
+
+                String sessionId = gameSessionManager.createGameSession(inviter, responder);
+
+                OP(new GameStart("SERVER", inviterUN, Lis), objOP);
+                System.out.println("🎮 Trận đấu bắt đầu giữa " + inviterUN + " và " + responderUN + " (Session: " + sessionId + ")");
+
 
             } catch (Exception e) {
                 System.err.println("❌ Lỗi khi tạo trận đấu: " + e.getMessage());
