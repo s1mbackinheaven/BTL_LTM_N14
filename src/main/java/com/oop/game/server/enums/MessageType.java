@@ -2,6 +2,8 @@ package com.oop.game.server.enums;
 
 public enum MessageType {
 
+    ACK,
+
     LOGIN_REQUEST,
     LOGIN_RESPONSE,
     LOGOUT_REQUEST,
@@ -33,5 +35,5 @@ public enum MessageType {
 
     // Error
     ERROR
-    
+
 }

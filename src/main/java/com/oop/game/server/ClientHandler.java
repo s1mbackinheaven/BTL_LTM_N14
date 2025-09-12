@@ -69,20 +69,13 @@ public class ClientHandler implements Runnable {
 
     private void handlerMes(Object obj, ObjectOutputStream objOP) throws IOException {
         if (obj instanceof LoginRequest) {
-            // đăng nhập
             handlerLoginReq((LoginRequest) obj, objOP);
         } else if (obj instanceof MoveRequest) {
-            // ném phi tiêu
             handlerMoveReq((MoveRequest) obj, objOP);
         } else if (obj instanceof InviteRequest) {
-            // lời mời thách đấu
             handlerInviteReq((InviteRequest) obj, objOP);
         } else if (obj instanceof PlayerListRequest) {
-            // danh sách người chơi online
             handlerPlayerListReq((PlayerListRequest) obj, objOP);
-        } else if (obj instanceof InviteResponse) {
-            // phản hồi lời mời thách đấu
-            handlerInviteResponse((InviteResponse) obj, objOP);
         } else {
             System.err.println("⚠️ Nhận được message không xác định từ client: " + obj);
         }
@@ -136,7 +129,7 @@ public class ClientHandler implements Runnable {
         String senderUN = req.getSenderUN();
         String targetUN = req.getTargetUsername();
 
-        // Kiểm tra người gửi có đang online không
+        // Kiểm tra người gửi có đang online không (mất mạng khi đang gửi)
         Player sender = mClient.getUserByName(senderUN);
         if (sender == null) {
             OP(new ErrorMessage("SERVER", ErrorMessage.PLAYER_NOT_FOUND, "Người gửi không online"), objOP);
