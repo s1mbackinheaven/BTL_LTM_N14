@@ -1,7 +1,9 @@
-package com.oop.game.server.protocol;
+package com.oop.game.server.protocol.response;
 
-import com.oop.game.server.core.Player;
+import com.oop.game.server.dto.PlayerInfoDTO;
 import com.oop.game.server.enums.MessageType;
+import com.oop.game.server.protocol.Message;
+import com.oop.game.server.core.Player;
 
 import java.util.List;
 
@@ -10,14 +12,14 @@ import java.util.List;
  */
 
 public class PlayerListResponse extends Message {
-    private List<Player> players;
+    private List<PlayerInfoDTO> players;
 
-    public PlayerListResponse(String serverName, List<Player> players) {
+    public PlayerListResponse(String serverName, List<PlayerInfoDTO> players) {
         super(MessageType.PLAYER_LIST_RESPONSE, serverName);
         this.players = players;
     }
 
-    public List<Player> getPlayers() {
+    public List<PlayerInfoDTO> getPlayers() {
         return players;
     }
 

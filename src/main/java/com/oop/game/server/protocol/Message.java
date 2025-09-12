@@ -13,11 +13,11 @@ public abstract class Message implements Serializable {
 
     private MessageType type;
     private long timestamp;
-    private String senderId;
+    private String senderUN;
 
     public Message(MessageType type, String senderId) {
         this.type = type;
-        this.senderId = senderId;
+        this.senderUN = senderId;
         this.timestamp = System.currentTimeMillis();
     }
 
@@ -30,13 +30,13 @@ public abstract class Message implements Serializable {
         return timestamp;
     }
 
-    public String getSenderId() {
-        return senderId;
+    public String getSenderUN() {
+        return senderUN;
     }
 
     @Override
     public String toString() {
         return String.format("%s[type=%s, sender=%s, time=%d]",
-                getClass().getSimpleName(), type, senderId, timestamp);
+                getClass().getSimpleName(), type, senderUN, timestamp);
     }
 }

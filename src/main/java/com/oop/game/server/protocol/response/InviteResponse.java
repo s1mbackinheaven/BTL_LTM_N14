@@ -1,6 +1,7 @@
-package com.oop.game.server.protocol;
+package com.oop.game.server.protocol.response;
 
 import com.oop.game.server.enums.MessageType;
+import com.oop.game.server.protocol.Message;
 
 /**
  * Phản hồi lời mời thách đấu
@@ -21,5 +22,9 @@ public class InviteResponse extends Message {
 
     public String getInviterUsername() {
         return inviterUsername;
+    }
+
+    public void sendTarget() {
+
     }
 }

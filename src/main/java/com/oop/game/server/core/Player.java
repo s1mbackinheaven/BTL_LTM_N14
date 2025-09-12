@@ -135,6 +135,6 @@ public class Player {
             return false;
 
         Player p = (Player) o;
-        return this.username == p.username;
+        return this.username.equals(p.username);
     }
 }

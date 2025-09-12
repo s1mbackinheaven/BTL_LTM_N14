@@ -1,6 +1,6 @@
 package com.oop.game;
 
-import com.oop.game.server.db.DAO;
+import com.oop.game.server.DAO.DAO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

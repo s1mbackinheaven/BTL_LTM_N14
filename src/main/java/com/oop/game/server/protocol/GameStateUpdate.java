@@ -1,7 +1,5 @@
 package com.oop.game.server.protocol;
 
-import java.util.List;
-
 import com.oop.game.server.dto.ColorBoardStateDTO;
 import com.oop.game.server.dto.PlayerGameStateDTO;
 import com.oop.game.server.enums.MessageType;

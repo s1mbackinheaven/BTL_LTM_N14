@@ -1,6 +1,7 @@
 package com.oop.game.server.managers;
 
 import com.oop.game.server.core.Player;
+import com.oop.game.server.dto.PlayerInfoDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +24,13 @@ public class ClientManager {
         listUserOnline = new CopyOnWriteArrayList<>();
     }
 
-    public List<Player> getListUserOnline() {
-        return new ArrayList<>(listUserOnline);
+    public List<PlayerInfoDTO> getListUserOnline() {
+        List<PlayerInfoDTO> pList = new ArrayList<>();
+
+        for (Player p : listUserOnline)
+            pList.add(new PlayerInfoDTO(p));
+
+        return pList;
     }
 
     public void addUserOnline(Player player) {
@@ -43,6 +49,15 @@ public class ClientManager {
      */
     public int getUserCount() {
         return listUserOnline.size();
+    }
+
+    public Player getUserByName(String un) {
+        for (Player i : listUserOnline) {
+            if (un.equals(i.getUsername()))
+                return i;
+        }
+
+        return null;
     }
 
     /**

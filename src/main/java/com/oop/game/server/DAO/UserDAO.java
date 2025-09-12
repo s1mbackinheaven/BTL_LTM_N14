@@ -1,4 +1,4 @@
-package com.oop.game.server.db;
+package com.oop.game.server.DAO;
 
 import com.oop.game.server.models.User;
 

@@ -10,6 +10,10 @@ public class ErrorMessage extends Message {
     private String errorMessage;
     private String details;
 
+    public ErrorMessage(String serverName, String errorCode, String errorMessage) {
+        this(serverName, errorCode, errorMessage, null);
+    }
+
     public ErrorMessage(String serverName, String errorCode, String errorMessage, String details) {
         super(MessageType.ERROR, serverName);
         this.errorCode = errorCode;
