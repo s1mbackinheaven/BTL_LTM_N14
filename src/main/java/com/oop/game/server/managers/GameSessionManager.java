@@ -36,14 +36,12 @@ public class GameSessionManager {
      * @return SessionId của trận đấu mới
      */
     public String createGameSession(Player challenger, Player challenged) {
+
         String sessionId = generateSessionId(challenger.getUsername(), challenged.getUsername());
 
         GameSession session = new GameSession(challenger, challenged);
-        activeSessions.put(sessionId, session);
 
-        // Cập nhật trạng thái busy cho cả 2 người chơi
-        challenger.setBusy(true);
-        challenged.setBusy(true);
+        activeSessions.put(sessionId, session);
 
         // Lưu mapping player -> session
         playerToSession.put(challenger.getUsername(), sessionId);
@@ -70,23 +68,6 @@ public class GameSessionManager {
         return sessionId != null ? activeSessions.get(sessionId) : null;
     }
 
-    /**
-     * Kết thúc trận đấu và giải phóng tài nguyên
-     */
-    public void endGameSession(String sessionId) {
-        GameSession session = activeSessions.remove(sessionId);
-        if (session != null) {
-            // Cập nhật trạng thái free cho cả 2 người chơi
-            session.getPlayer1().setBusy(false);
-            session.getPlayer2().setBusy(false);
-
-            // Xóa mapping
-            playerToSession.remove(session.getPlayer1().getUsername());
-            playerToSession.remove(session.getPlayer2().getUsername());
-
-            System.out.println("🏁 Kết thúc trận đấu: " + sessionId);
-        }
-    }
 
     /**
      * Kiểm tra người chơi có đang trong trận đấu không
@@ -112,7 +93,20 @@ public class GameSessionManager {
         return names[0] + "_vs_" + names[1] + "_" + System.currentTimeMillis();
     }
 
-    
+    public void endGameSession(String sessionId) {
+        GameSession session = activeSessions.remove(sessionId);
+        if (session != null) {
+            // Xóa mapping player -> session
+            playerToSession.remove(session.getPlayer1().getUsername());
+            playerToSession.remove(session.getPlayer2().getUsername());
+
+            System.out.println("✅ Kết thúc trận đấu: " + sessionId
+                    + " | Winner: " + (session.getWinner() != null ? session.getWinner().getUsername() : "null")
+                    + " | Reason: " + session.getEndReason());
+        }
+    }
+
+
     /**
      * In thông tin debug
      */

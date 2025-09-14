@@ -189,6 +189,18 @@ public class GameSession {
         // Reset trạng thái busy
         player1.setBusy(false);
         player2.setBusy(false);
+
+        // Log kết quả
+        Player loser = (winner == player1) ? player2 : player1;
+        System.out.println("🏆 GAME KẾT THÚC:");
+        System.out.println("   Winner: " + winner.getUsername() + " (" + winner.getCurrentScore() + " điểm)");
+        System.out.println("   Loser: " + loser.getUsername() + " (" + loser.getCurrentScore() + " điểm)");
+        System.out.println("   Reason: " + reason);
+        System.out.println(
+                "   ELO Change: Winner +" + (reason == GameEndReason.OPPONENT_LEFT ? 51 : 101) + ", Loser -36");
+
+        // TODO: Gửi thông báo đến client (cần implement trong ClientHandler)
+        // TODO: Lưu kết quả vào database (cần implement với MatchDAO)
     }
 
     /**

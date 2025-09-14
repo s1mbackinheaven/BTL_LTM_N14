@@ -1,11 +1,12 @@
 package com.oop.game.server;
 
+import com.oop.game.server.core.GameSession;
 import com.oop.game.server.core.Player;
+import com.oop.game.server.core.GameEngine;
 import com.oop.game.server.DAO.UserDAO;
 import com.oop.game.server.managers.ClientManager;
 import com.oop.game.server.models.User;
 import com.oop.game.server.protocol.ErrorMessage;
-import com.oop.game.server.protocol.GameStart;
 import com.oop.game.server.protocol.request.LoginRequest;
 import com.oop.game.server.protocol.Message;
 import com.oop.game.server.protocol.request.InviteRequest;
@@ -127,7 +128,39 @@ public class ClientHandler implements Runnable {
     }
 
     private void handlerMoveReq(MoveRequest req, ObjectOutputStream objOP) {
-        // TODO: xử lý move request
+        if (currentPlayer == null) {
+            OP(new ErrorMessage("SERVER", "NOT_LOGGED_IN", "Chưa đăng nhập"), objOP);
+            return;
+        }
+
+        // Kiểm tra người chơi có đang trong trận đấu không
+        if (!gameSessionManager.isPlayerInGame(currentPlayer.getUsername())) {
+            OP(new ErrorMessage("SERVER", "NOT_IN_GAME", "Không đang trong trận đấu"), objOP);
+            return;
+        }
+
+        GameSession game = gameSessionManager.getSessionByPlayer(currentPlayer.getUsername());
+        if (game == null || game.isGameEnded()) {
+            OP(new ErrorMessage("SERVER", "GAME_ENDED", "Trận đấu đã kết thúc"), objOP);
+            return;
+        }
+
+        try {
+            // Xử lý lượt ném
+            GameEngine.ThrowResult result = game.processPlayerThrow(
+                    req.getX(),
+                    req.getY(),
+                    req.getUsedPowerUp());
+
+            System.out.println("🎯 " + currentPlayer.getUsername() + " ném (" + req.getX() + "," + req.getY() +
+                    ") -> " + result.finalScore + " điểm | Tổng: " + currentPlayer.getCurrentScore());
+
+            // Game sẽ tự động kết thúc trong processPlayerThrow nếu đạt 16 điểm
+
+        } catch (Exception e) {
+            System.err.println("❌ Lỗi khi xử lý move request: " + e.getMessage());
+            OP(new ErrorMessage("SERVER", "MOVE_FAILED", "Không thể thực hiện nước đi"), objOP);
+        }
     }
 
     private void handlerPlayerListReq(PlayerListRequest req, ObjectOutputStream objOP) {
@@ -219,11 +252,11 @@ public class ClientHandler implements Runnable {
                 // Gửi response xác nhận cho người phản hồi
                 OP(new InviteResponse(responderUN, inviterUN, true), objOP);
 
+                // khởi tạo game đấu
                 String sessionId = gameSessionManager.createGameSession(inviter, responder);
 
-                OP(new GameStart("SERVER", inviterUN, Lis), objOP);
-                System.out.println("🎮 Trận đấu bắt đầu giữa " + inviterUN + " và " + responderUN + " (Session: " + sessionId + ")");
-
+                System.out.println("🎮 Trận đấu bắt đầu giữa " + inviterUN + " và " + responderUN + " (Session: "
+                        + sessionId + ")");
 
             } catch (Exception e) {
                 System.err.println("❌ Lỗi khi tạo trận đấu: " + e.getMessage());
@@ -247,8 +280,13 @@ public class ClientHandler implements Runnable {
         if (currentPlayer != null) {
             // Nếu đang trong trận đấu, kết thúc trận đấu
             if (gameSessionManager.isPlayerInGame(currentPlayer.getUsername())) {
-                // TODO: Xử lý khi người chơi rời game giữa chừng
-                System.out.println("⚠️ " + currentPlayer.getUsername() + " đã rời game giữa chừng");
+                GameSession game = gameSessionManager.getSessionByPlayer(currentPlayer.getUsername());
+
+                if (game != null && !game.isGameEnded()) {
+                    // Xử lý người chơi rời trận
+                    game.playerLeft(currentPlayer);
+                    System.out.println("⚠️ " + currentPlayer.getUsername() + " đã rời game giữa chừng");
+                }
             }
 
             // Hủy đăng ký kết nối

@@ -19,11 +19,11 @@ public class MoveRequest extends Message {
         this.usedPowerUp = usedPowerUp;
     }
 
-    public int getPlayerX() {
+    public int getX() {
         return playerX;
     }
 
-    public int getPlayerY() {
+    public int getY() {
         return playerY;
     }
 

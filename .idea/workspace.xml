@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31c5998e-355f-4adf-a9d1-bbf289ed1706" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/INVITATION_GUIDE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/INVITATION_SUMMARY.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/INVITATION_GUIDE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/INVITATION_SUMMARY.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/demo/InvitationDemo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/GameStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/GameStart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/util/save.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/sql/save.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/GameSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/GameSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/managers/GameSessionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/managers/GameSessionManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,39 +72,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SHELLCHECK.PATH&quot;: &quot;C:\\Users\\dung0\\AppData\\Roaming\\JetBrains\\IdeaIC2025.1\\plugins\\Shell Script\\linux\\amd64\\shellcheck&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dungcony&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;//wsl.localhost/Ubuntu-22.04/home/dungcony/BTL_LTM_N14&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SHELLCHECK.PATH": "C:\\Users\\dung0\\AppData\\Roaming\\JetBrains\\IdeaIC2025.1\\plugins\\Shell Script\\linux\\amd64\\shellcheck",
+    "git-widget-placeholder": "dungcony",
+    "ignore.virus.scanning.warn.message": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "//wsl.localhost/Ubuntu-22.04/home/dungcony/BTL_LTM_N14",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RdControllerToolWindowsLayoutState" isNewUi="true">
     <layout>
       <window_info id="Bookmarks" side_tool="true" />
@@ -194,6 +191,11 @@
           <line>72</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/oop/game/server/managers/GameSessionManager.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/oop/game/server/models/Match.java</url>
           <line>43</line>
@@ -220,6 +222,15 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/oop/game/server/managers/GameSessionManager.java</url>
+          <line>81</line>
+          <properties class="com.oop.game.server.managers.GameSessionManager" method="getActiveSessionCount">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
