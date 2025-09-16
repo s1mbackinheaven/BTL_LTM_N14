@@ -17,10 +17,16 @@ public class GameSession {
     private Player winner;
     private GameEndReason endReason;
 
+    // ✅ THÊM: ID của match trong database
+    private int matchId;
+
+    //sessionId để xử lý cache
+    private String id;
     // Phụ trợ chờ kích hoạt (ví dụ: HALF_OPPONENT_NEXT)
     private Map<Player, List<PowerUp>> pendingPowerUps;
 
-    public GameSession(Player challenger, Player challenged) {
+    public GameSession(Player challenger, Player challenged, String id) {
+        this.id = id;
         this.player1 = challenger;
         this.player2 = challenged;
         this.currentPlayer = challenger; // Người thách đấu ném trước
@@ -44,8 +50,6 @@ public class GameSession {
         player2.setMyTurn(false);
 
         // Random 3 phụ trợ cho mỗi người
-        // player1.setAvailablePowerUps(Arrays.asList(GameEngine.generateRandomPowerUps()));
-        // player2.setAvailablePowerUps(Arrays.asList(GameEngine.generateRandomPowerUps()));
         player1.setAvailablePowerUps(new ArrayList<>(Arrays.asList(GameEngine.generateRandomPowerUps())));
         player2.setAvailablePowerUps(new ArrayList<>(Arrays.asList(GameEngine.generateRandomPowerUps())));
 
@@ -179,6 +183,10 @@ public class GameSession {
      * Kết thúc game với lý do
      */
     public void endGame(Player winner, GameEndReason reason) {
+
+        if (gameEnded)
+            return;
+
         this.gameEnded = true;
         this.winner = winner;
         this.endReason = reason;
@@ -249,6 +257,10 @@ public class GameSession {
         return currentPlayer;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public ColorBoard getColorBoard() {
         return colorBoard;
     }
@@ -263,6 +275,15 @@ public class GameSession {
 
     public GameEndReason getEndReason() {
         return endReason;
+    }
+
+    // ✅ THÊM: Getter/Setter cho matchId
+    public int getMatchId() {
+        return matchId;
+    }
+
+    public void setMatchId(int matchId) {
+        this.matchId = matchId;
     }
 
 }

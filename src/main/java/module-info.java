@@ -3,6 +3,7 @@ module com.oop.game {
     requires javafx.fxml;
     requires java.sql;
     requires java.desktop;
+    requires jbcrypt;
 
     opens com.oop.game to javafx.fxml;
 

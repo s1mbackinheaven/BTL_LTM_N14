@@ -9,16 +9,16 @@ import com.oop.game.server.enums.MessageType;
  * Gửi sau mỗi lượt để sync thông tin
  */
 public class GameStateUpdate extends Message {
-    private String currentPlayerTurn; // Username của người đang ném
+
     private PlayerGameStateDTO player1State; // Trạng thái player 1
     private PlayerGameStateDTO player2State; // Trạng thái player 2
     private ColorBoardStateDTO boardState; // Trạng thái bảng màu (cho đoán màu)
 
-    public GameStateUpdate(String serverName, String currentPlayerTurn,
-                           PlayerGameStateDTO player1State, PlayerGameStateDTO player2State,
-                           ColorBoardStateDTO boardState) {
+    public GameStateUpdate(String serverName,
+            PlayerGameStateDTO player1State,
+            PlayerGameStateDTO player2State,
+            ColorBoardStateDTO boardState) {
         super(MessageType.GAME_STATE_UPDATE, serverName);
-        this.currentPlayerTurn = currentPlayerTurn;
         this.player1State = player1State;
         this.player2State = player2State;
         this.boardState = boardState;
@@ -26,7 +26,7 @@ public class GameStateUpdate extends Message {
 
     // Getters
     public String getCurrentPlayerTurn() {
-        return currentPlayerTurn;
+        return player1State.isMyTurn() == true ? player1State.getUsername() : player2State.getUsername();
     }
 
     public PlayerGameStateDTO getPlayer1State() {

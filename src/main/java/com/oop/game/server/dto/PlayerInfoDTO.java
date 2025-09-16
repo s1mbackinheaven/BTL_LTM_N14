@@ -1,6 +1,7 @@
 package com.oop.game.server.dto;
 
 import com.oop.game.server.core.Player;
+import com.oop.game.server.models.User;
 
 import java.io.*;
 
@@ -27,7 +28,14 @@ public class PlayerInfoDTO implements Serializable {
         this.isBusy = p.isBusy();
     }
 
-    /* GETTER*/
+    public PlayerInfoDTO(User u) {
+        this.username = u.getUsername();
+        this.elo = u.getElo();
+        this.totalLosses = u.getTotalLosses();
+        this.totalWins = u.getTotalWins();
+    }
+
+    /* GETTER */
     public String getUsername() {
         return username;
     }
@@ -44,7 +52,7 @@ public class PlayerInfoDTO implements Serializable {
         return totalLosses;
     }
 
-    //SETTER
+    // SETTER
     public void setUsername(String username) {
         this.username = username;
     }

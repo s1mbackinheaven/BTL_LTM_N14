@@ -1,6 +1,5 @@
 package com.oop.game.server.DAO;
 
-import com.oop.game.server.DAO.DAO;
 import com.oop.game.server.models.Match;
 
 import java.sql.*;
@@ -34,6 +33,7 @@ public class MatchDAO extends DAO {
     }
 
     public boolean finishMatch(int matchId, int winnerId, int winnerScore, int loserScore, int eloChange) {
+
         String sql = "UPDATE matches SET winner_id = ?, player1_score = ?, player2_score = ?, elo_change = ?, played_at = CURRENT_TIMESTAMP WHERE id = ?";
 
         try (Connection con = getConnection();

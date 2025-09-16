@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * Bao gồm thông tin persistent (elo, thống kê) và temporary (trạng thái online)
  */
 public class Player {
+    private int id;
     private String username;
     private int elo; // Điểm xếp hạng tổng
     private int totalWins; // Tổng số trận thắng
@@ -36,6 +37,7 @@ public class Player {
     }
 
     public Player(User u) {
+        this.id = u.getId();
         this.username = u.getUsername();
         this.elo = u.getElo();
         this.totalLosses = u.getTotalLosses();
@@ -70,6 +72,10 @@ public class Player {
     }
 
     // Getters và Setters
+    public int getId() {
+        return id;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -102,6 +108,18 @@ public class Player {
         return availablePowerUps;
     }
 
+    public List<String> getPowerUpString() {
+        List<String> res = new ArrayList<>();
+        for (var i : availablePowerUps) {
+            res.add(i.name());
+        }
+        return res;
+    }
+
+    public void setAvailablePowerUps(List<PowerUp> powerUps) {
+        this.availablePowerUps = powerUps;
+    }
+
     public boolean isMyTurn() {
         return isMyTurn;
     }
@@ -116,10 +134,6 @@ public class Player {
 
     public void setCurrentScore(int score) {
         this.currentScore = score;
-    }
-
-    public void setAvailablePowerUps(List<PowerUp> powerUps) {
-        this.availablePowerUps = new ArrayList<>(powerUps); // Tạo ArrayList mới
     }
 
     public void setMyTurn(boolean myTurn) {

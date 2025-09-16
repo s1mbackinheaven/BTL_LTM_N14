@@ -15,9 +15,9 @@ public abstract class Message implements Serializable {
     private long timestamp;
     private String senderUN;
 
-    public Message(MessageType type, String senderId) {
+    public Message(MessageType type, String senderUN) {
         this.type = type;
-        this.senderUN = senderId;
+        this.senderUN = senderUN;
         this.timestamp = System.currentTimeMillis();
     }
 

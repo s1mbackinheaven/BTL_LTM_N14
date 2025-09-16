@@ -4,14 +4,15 @@ import com.oop.game.server.core.GameSession;
 import com.oop.game.server.core.Player;
 import com.oop.game.server.core.GameEngine;
 import com.oop.game.server.DAO.UserDAO;
+import com.oop.game.server.dto.PlayerGameStateDTO;
+import com.oop.game.server.dto.PlayerInfoDTO;
+import com.oop.game.server.enums.AuthStatus;
 import com.oop.game.server.managers.ClientManager;
 import com.oop.game.server.models.User;
 import com.oop.game.server.protocol.ErrorMessage;
-import com.oop.game.server.protocol.request.LoginRequest;
+import com.oop.game.server.protocol.GameStateUpdate;
+import com.oop.game.server.protocol.request.*;
 import com.oop.game.server.protocol.Message;
-import com.oop.game.server.protocol.request.InviteRequest;
-import com.oop.game.server.protocol.request.MoveRequest;
-import com.oop.game.server.protocol.request.PlayerListRequest;
 import com.oop.game.server.protocol.response.LoginResponse;
 import com.oop.game.server.protocol.response.PlayerListResponse;
 import com.oop.game.server.protocol.response.InviteResponse;
@@ -22,6 +23,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClientHandler implements Runnable {
     private final Socket socket;
@@ -40,7 +43,7 @@ public class ClientHandler implements Runnable {
     @Override
     public void run() {
         try (ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
-             ObjectInputStream input = new ObjectInputStream(socket.getInputStream())) {
+                ObjectInputStream input = new ObjectInputStream(socket.getInputStream())) {
 
             while (true) {
                 try {
@@ -84,9 +87,9 @@ public class ClientHandler implements Runnable {
         } else if (obj instanceof PlayerListRequest) {
             // danh sách người chơi online
             handlerPlayerListReq((PlayerListRequest) obj, objOP);
-        } else if (obj instanceof InviteResponse) {
-            // phản hồi lời mời thách đấu
-            handlerInviteResponse((InviteResponse) obj, objOP);
+        } else if (obj instanceof LeaderboardRequest) {
+            // bảng xếp hạng dựa trên elo
+            handlerLeaderboardReq((LeaderboardRequest) obj, objOP);
         } else {
             System.err.println("⚠️ Nhận được message không xác định từ client: " + obj);
         }
@@ -102,12 +105,22 @@ public class ClientHandler implements Runnable {
             return;
         }
 
-        if (!userDAO.authenticateUser(username, password)) {
+        AuthStatus status = userDAO.authenticateUser(username, password);
+        if (status == AuthStatus.INVALID_CREDENTIALS) {
             OP(new LoginResponse(false, "Sai tài khoản hoặc mật khẩu", null), objOP);
+            return;
+        }
+        if (status == AuthStatus.DB_ERROR) {
+            OP(new LoginResponse(false, "Hệ thống đang bận, vui lòng thử lại sau", null), objOP);
             return;
         }
 
         User user = userDAO.getUserByUsername(username);
+        if (user == null) {
+            OP(new LoginResponse(false, "Không thể lấy thông tin tài khoản", null), objOP);
+            return;
+        }
+
         Player player = new Player(user);
 
         if (mClient.isOnline(player)) {
@@ -155,7 +168,19 @@ public class ClientHandler implements Runnable {
             System.out.println("🎯 " + currentPlayer.getUsername() + " ném (" + req.getX() + "," + req.getY() +
                     ") -> " + result.finalScore + " điểm | Tổng: " + currentPlayer.getCurrentScore());
 
+            Player player2 = game.getPlayer2();
+
+            // OP(new GameStateUpdate("SERVER",
+            // new PlayerGameStateDTO(currentPlayer.getUsername(),
+            // currentPlayer.getCurrentScore(), currentPlayer.getPowerUpString(),
+            // currentPlayer.isMyTurn()),
+            // new PlayerGameStateDTO(player2.getUsername(), player2.getCurrentScore(),
+            // player2.getPowerUpString(), player2.isMyTurn()),
+            // game.getColorBoard()));
+
             // Game sẽ tự động kết thúc trong processPlayerThrow nếu đạt 16 điểm
+            if (game.isGameEnded())
+                gameSessionManager.endGameSession(game.getId());
 
         } catch (Exception e) {
             System.err.println("❌ Lỗi khi xử lý move request: " + e.getMessage());
@@ -164,7 +189,6 @@ public class ClientHandler implements Runnable {
     }
 
     private void handlerPlayerListReq(PlayerListRequest req, ObjectOutputStream objOP) {
-        // TODO: xử lý player list request
         OP(new PlayerListResponse(req.getSenderUN(), mClient.getListUserOnline()), objOP);
     }
 
@@ -273,6 +297,27 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    private void handlerLeaderboardReq(LeaderboardRequest req, ObjectOutputStream objOP) {
+
+        // trả về bảng xếp hạng dựa trên elo
+
+        UserDAO ud = new UserDAO();
+
+        try {
+            List<User> players = ud.getAllUserByOrder("elo");
+
+            List<PlayerInfoDTO> p = new ArrayList<>();
+
+            for (var i : players) {
+                p.add(new PlayerInfoDTO(i));
+            }
+            OP(new PlayerListResponse("SERVER", p), objOP);
+        } catch (Exception e) {
+            OP(new ErrorMessage("SERVER", "502", "Lỗi không xác định hihi"), objOP);
+        }
+
+    }
+
     /**
      * Cleanup khi client disconnect
      */
@@ -285,6 +330,9 @@ public class ClientHandler implements Runnable {
                 if (game != null && !game.isGameEnded()) {
                     // Xử lý người chơi rời trận
                     game.playerLeft(currentPlayer);
+
+                    if (game.isGameEnded())
+                        gameSessionManager.endGameSession(game.getId());
                     System.out.println("⚠️ " + currentPlayer.getUsername() + " đã rời game giữa chừng");
                 }
             }

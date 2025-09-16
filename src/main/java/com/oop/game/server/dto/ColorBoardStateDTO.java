@@ -1,5 +1,7 @@
 package com.oop.game.server.dto;
 
+import com.oop.game.server.core.ColorBoard;
+
 import java.io.*;
 import java.util.*;
 
@@ -15,6 +17,10 @@ public class ColorBoardStateDTO implements Serializable {
         this.visibleColors = visibleColors;
         this.hasRecentSwap = hasRecentSwap;
         this.lastScoreGained = lastScoreGained;
+    }
+
+    public ColorBoardStateDTO(ColorBoard bard) {
+
     }
 
     public List<String> getVisibleColors() {
