@@ -52,6 +52,10 @@ public class PlayerInfoDTO implements Serializable {
         return totalLosses;
     }
 
+    public boolean isBusy() {
+        return isBusy;
+    }
+
     // SETTER
     public void setUsername(String username) {
         this.username = username;
@@ -68,4 +72,5 @@ public class PlayerInfoDTO implements Serializable {
     public void setTotalLosses(int totalLosses) {
         this.totalLosses = totalLosses;
     }
+
 }
