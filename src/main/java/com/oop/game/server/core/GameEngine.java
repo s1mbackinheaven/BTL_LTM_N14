@@ -114,8 +114,8 @@ public class GameEngine {
     public static class ThrowResult {
         public final int finalX, finalY;
         public final Color hitColor;
-        public final int baseScore;
-        public final int finalScore;
+        public final int baseScore; //điểm cơ bản
+        public final int finalScore;//điểm cuối cùng
         public final boolean hasExtraTurn;
 
         public ThrowResult(int finalX, int finalY, Color hitColor,

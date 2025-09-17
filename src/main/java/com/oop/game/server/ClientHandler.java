@@ -7,6 +7,7 @@ import com.oop.game.server.DAO.UserDAO;
 import com.oop.game.server.dto.PlayerGameStateDTO;
 import com.oop.game.server.dto.PlayerInfoDTO;
 import com.oop.game.server.enums.AuthStatus;
+import com.oop.game.server.enums.PowerUp;
 import com.oop.game.server.managers.ClientManager;
 import com.oop.game.server.models.User;
 import com.oop.game.server.protocol.ErrorMessage;
@@ -170,13 +171,15 @@ public class ClientHandler implements Runnable {
 
             Player player2 = game.getPlayer2();
 
-            // OP(new GameStateUpdate("SERVER",
-            // new PlayerGameStateDTO(currentPlayer.getUsername(),
-            // currentPlayer.getCurrentScore(), currentPlayer.getPowerUpString(),
-            // currentPlayer.isMyTurn()),
-            // new PlayerGameStateDTO(player2.getUsername(), player2.getCurrentScore(),
-            // player2.getPowerUpString(), player2.isMyTurn()),
-            // game.getColorBoard()));
+            OP(new GameStateUpdate("SERVER",
+                    new PlayerGameStateDTO(currentPlayer.getUsername(),
+                            currentPlayer.getCurrentScore(), currentPlayer.getPowerUpString(),
+                            currentPlayer.isMyTurn()),
+
+                    new PlayerGameStateDTO(player2.getUsername(), player2.getCurrentScore(),
+                            player2.getPowerUpString(), player2.isMyTurn()),
+                    game.getColorBoard().ToDTO(result.finalScore, hasColorSwapOccurred(req.getUsedPowerUp(), result))),
+                    objOP);
 
             // Game sẽ tự động kết thúc trong processPlayerThrow nếu đạt 16 điểm
             if (game.isGameEnded())
@@ -316,6 +319,16 @@ public class ClientHandler implements Runnable {
             OP(new ErrorMessage("SERVER", "502", "Lỗi không xác định hihi"), objOP);
         }
 
+    }
+
+    /**
+     * Kiểm tra có hoán đổi màu xảy ra không
+     */
+    private boolean hasColorSwapOccurred(PowerUp usedPowerUp, GameEngine.ThrowResult result) {
+        // Hoán đổi xảy ra khi:
+        // 1. Sử dụng phụ trợ SWAP_OPPONENT_COLORS
+        // 2. Trúng màu (theo luật game cho phép đổi màu)
+        return (usedPowerUp == PowerUp.SWAP_OPPONENT_COLORS) || (result.hitColor != null);
     }
 
     /**

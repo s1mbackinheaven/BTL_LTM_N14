@@ -2,6 +2,7 @@ package com.oop.game.server.core;
 
 import java.util.*;
 
+import com.oop.game.server.dto.ColorBoardStateDTO;
 import com.oop.game.server.enums.Color;
 
 /**
@@ -86,6 +87,20 @@ public class ColorBoard {
         for (int i = 0; i < 3; i++) {
             visibleColors.add(colors.get(i));
         }
+    }
+
+    public ColorBoardStateDTO ToDTO(int lastScoreGained, boolean hasRecentSwap) {
+        
+        // Lấy danh sách màu đang hiện
+        List<String> visibleColorNames = new ArrayList<>();
+
+        for (Color color : Color.values()) {
+            if (isColorVisible(color)) {
+                visibleColorNames.add(color.name());
+            }
+        }
+
+        return new ColorBoardStateDTO(visibleColorNames, hasRecentSwap, lastScoreGained);
     }
 
     /**

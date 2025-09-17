@@ -105,7 +105,7 @@ public class GameSessionManager {
      */
     private String generateSessionId(String player1, String player2) {
         // Sắp xếp tên theo thứ tự alphabet để đảm bảo tính nhất quán
-        String[] names = {player1, player2};
+        String[] names = { player1, player2 };
         java.util.Arrays.sort(names);
         return names[0] + "_vs_" + names[1] + "_" + System.currentTimeMillis();
     }

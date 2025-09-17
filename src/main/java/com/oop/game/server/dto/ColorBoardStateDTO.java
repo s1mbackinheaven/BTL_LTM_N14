@@ -1,6 +1,7 @@
 package com.oop.game.server.dto;
 
 import com.oop.game.server.core.ColorBoard;
+import com.oop.game.server.enums.Color;
 
 import java.io.*;
 import java.util.*;
@@ -19,8 +20,15 @@ public class ColorBoardStateDTO implements Serializable {
         this.lastScoreGained = lastScoreGained;
     }
 
-    public ColorBoardStateDTO(ColorBoard bard) {
-
+    public ColorBoardStateDTO(ColorBoard board) {
+        this.visibleColors = new ArrayList<>();
+        for (Color color : Color.values()) {
+            if (board.isColorVisible(color)) {
+                this.visibleColors.add(color.name());
+            }
+        }
+        this.hasRecentSwap = false; // Default value, sẽ được set từ bên ngoài
+        this.lastScoreGained = 0; // Default value, sẽ được set từ bên ngoài
     }
 
     public List<String> getVisibleColors() {

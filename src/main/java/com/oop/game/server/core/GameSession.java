@@ -20,7 +20,7 @@ public class GameSession {
     // ✅ THÊM: ID của match trong database
     private int matchId;
 
-    //sessionId để xử lý cache
+    // sessionId để xử lý cache
     private String id;
     // Phụ trợ chờ kích hoạt (ví dụ: HALF_OPPONENT_NEXT)
     private Map<Player, List<PowerUp>> pendingPowerUps;
