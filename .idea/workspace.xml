@@ -10,8 +10,10 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/ClientHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/ColorBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/ColorBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/GameSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/GameSession.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/dto/ColorBoardStateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/dto/ColorBoardStateDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/dto/PlayerInfoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/dto/PlayerInfoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/managers/GameSessionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/managers/GameSessionManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

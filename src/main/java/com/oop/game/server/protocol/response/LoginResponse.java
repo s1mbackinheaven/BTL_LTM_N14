@@ -5,8 +5,6 @@ import com.oop.game.server.enums.MessageType;
 import com.oop.game.server.dto.PlayerInfoDTO;
 import com.oop.game.server.protocol.Message;
 
-import java.io.*;
-
 /**
  * Response đăng nhập từ server
  */

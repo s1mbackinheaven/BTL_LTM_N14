@@ -3,7 +3,6 @@ package com.oop.game.server.protocol.response;
 import com.oop.game.server.dto.PlayerInfoDTO;
 import com.oop.game.server.enums.MessageType;
 import com.oop.game.server.protocol.Message;
-import com.oop.game.server.core.Player;
 
 import java.util.List;
 

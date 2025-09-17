@@ -145,7 +145,6 @@ public class GameSession {
 
         // Nếu trúng màu, cho phép đổi màu (theo luật game)
         if (result.hitColor != null) {
-            // TODO: Implement color swapping choice for player
             // Hiện tại tự động random để test
             colorBoard.swapRandomColors();
         }
