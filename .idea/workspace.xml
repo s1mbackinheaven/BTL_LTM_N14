@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31c5998e-355f-4adf-a9d1-bbf289ed1706" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/continue.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/ColorBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/ColorBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/GameSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/GameSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/dto/ColorBoardStateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/dto/ColorBoardStateDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/dto/PlayerInfoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/dto/PlayerInfoDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/managers/GameSessionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/managers/GameSessionManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,6 +146,13 @@
       <recent name="com.oop.game" />
     </key>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="31c5998e-355f-4adf-a9d1-bbf289ed1706" name="Changes" comment="" />
@@ -175,6 +174,11 @@
       <workItem from="1757413792326" duration="76000" />
       <workItem from="1757413900597" duration="468000" />
       <workItem from="1757414406310" duration="70000" />
+      <workItem from="1758252880026" duration="57000" />
+      <workItem from="1758253263388" duration="94000" />
+      <workItem from="1758253368956" duration="239000" />
+      <workItem from="1758352265138" duration="633000" />
+      <workItem from="1758353198697" duration="5000" />
     </task>
     <servers />
   </component>
@@ -203,21 +207,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/oop/game/server/managers/GameSessionManager.java</url>
           <line>99</line>
           <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/oop/game/server/ClientHandler.java</url>
-          <line>194</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/oop/game/server/ClientHandler.java</url>
-          <line>250</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/oop/game/server/ClientHandler.java</url>
-          <line>144</line>
-          <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/oop/game/server/models/Match.java</url>
