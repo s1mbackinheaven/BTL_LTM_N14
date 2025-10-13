@@ -1,0 +1,161 @@
+
+/* Ảnh nền cho toàn bộ màn hình đăng nhập */
+.login-root-pane {
+    -fx-background-image: url("images/loginbackground.jpeg");
+    -fx-background-size: cover;          /* Phóng to/thu nhỏ ảnh để lấp đầy không gian */
+    -fx-background-position: center center; /* Giữ ảnh ở giữa */
+    -fx-background-repeat: no-repeat;    /* Không lặp lại ảnh */
+}
+
+/* Vùng chứa form đăng nhập (VBox) - sẽ có nền mờ để chữ dễ đọc */
+.login-form-container {
+    -fx-max-width: 400px; /* Giới hạn chiều rộng tối đa là 400 pixels */
+    -fx-max-height: 400px;
+    -fx-background-color: rgba(0, 0, 0, 0.7); /* Nền đen, mờ 70% */
+    -fx-background-radius: 15;           /* Bo tròn các góc */
+    -fx-padding: 30px;                   /* Khoảng trống bên trong */
+    -fx-spacing: 15px;                   /* Khoảng cách giữa các thành phần */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0); /* Đổ bóng nhẹ */
+    -fx-alignment: CENTER;               /* Căn giữa các thành phần */
+}
+
+/* Tiêu đề "🎯 Dart Battle" */
+.login-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;              /* Chữ trắng để nổi bật trên nền tối */
+    -fx-padding: 0 0 10px 0;
+}
+
+/* Style chung cho TextField và PasswordField */
+.text-field, .password-field {
+    -fx-pref-height: 35px;
+    -fx-font-size: 14px;
+    -fx-background-color: #333333; /* Nền tối hơn */
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #cccccc; /* Màu chữ gợi ý */
+    -fx-background-radius: 5;
+    -fx-border-color: #555555;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5;
+}
+
+/* Style cho Button đăng nhập */
+.login-button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+.login-button:hover {
+    -fx-background-color: #45a049;
+}
+
+/* Nhãn trạng thái lỗi */
+.status-label-error {
+    -fx-text-fill: #FF5252; /* Màu đỏ nổi bật */
+    -fx-font-weight: bold;
+}
+
+/* Nhãn trạng thái thông tin */
+.status-label-info {
+    -fx-text-fill: #2196F3; /* Màu xanh dương */
+    -fx-font-weight: bold;
+}
+/* ================================================================== */
+/* ==                     GIAO DIỆN LOBBY                          == */
+/* ================================================================== */
+
+/* Áp dụng cùng ảnh nền như màn hình đăng nhập */
+.lobby-root-pane {
+    -fx-background-image: url("images/lobby.jpeg");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+}
+
+/* Thanh Header chứa thông tin người dùng */
+.lobby-header {
+    -fx-background-color: rgba(0, 0, 0, 0.7);
+    -fx-padding: 10px 25px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 10, 0, 0, 2);
+}
+
+.lobby-username-label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.lobby-elo-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #cccccc;
+}
+
+/* Panel chính ở giữa chứa danh sách người chơi */
+.lobby-main-panel {
+    -fx-background-color: rgba(15, 15, 15, 0.8); /* Tối hơn một chút để nổi bật */
+    -fx-background-radius: 15;
+    -fx-padding: 25px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 15, 0, 0, 0);
+    -fx-max-width: 600px; /* Giới hạn chiều rộng */
+}
+
+.lobby-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-padding: 0 0 15px 0;
+}
+
+/* === Style cho ListView (Quan trọng nhất) === */
+.list-view {
+    -fx-background-color: transparent; /* Nền trong suốt */
+}
+
+.list-view .list-cell {
+    -fx-background-color: transparent; /* Nền của mỗi item trong suốt */
+    -fx-text-fill: #e0e0e0;             /* Màu chữ sáng */
+    -fx-font-size: 14px;
+    -fx-padding: 10px;
+    -fx-border-color: transparent transparent #444444 transparent; /* Đường kẻ ngăn cách */
+    -fx-border-width: 1;
+}
+
+/* Style khi di chuột qua một item */
+.list-view .list-cell:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Style khi chọn một item */
+.list-view .list-cell:filled:selected {
+    -fx-background-color: #4CAF50; /* Màu xanh lá cây khi được chọn */
+    -fx-text-fill: white;
+}
+
+/* === Style cho các nút bấm === */
+.lobby-button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-pref-height: 40px;
+}
+.lobby-button:hover {
+    -fx-background-color: #45a049;
+}
+
+.logout-button {
+    -fx-background-color: #D32F2F; /* Màu đỏ cho nút đăng xuất */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+.logout-button:hover {
+    -fx-background-color: #B71C1C;
+}

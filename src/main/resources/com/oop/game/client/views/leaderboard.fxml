@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import java.net.URL?>
+
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.oop.game.client.controllers.LeaderboardController"
+           styleClass="lobby-root-pane">
+
+    <stylesheets>
+        <URL value="@../assets/styles.css"/>
+    </stylesheets>
+
+    <BorderPane>
+        <padding>
+            <Insets top="40" bottom="40" left="80" right="80"/>
+        </padding>
+
+        <center>
+            <VBox alignment="TOP_CENTER" spacing="20" styleClass="login-form-container">
+                <Label text="🏆 BẢNG XẾP HẠNG 🏆" styleClass="login-title"/>
+
+                <TableView fx:id="leaderboardTable" prefHeight="400">
+                    <columns>
+                        <TableColumn fx:id="rankColumn" text="Hạng" prefWidth="75.0"/>
+                        <TableColumn fx:id="usernameColumn" text="Người chơi" prefWidth="250.0"/>
+                        <TableColumn fx:id="eloColumn" text="ELO" prefWidth="100.0"/>
+                        <TableColumn fx:id="winsColumn" text="Thắng" prefWidth="75.0"/>
+                        <TableColumn fx:id="lossesColumn" text="Thua" prefWidth="75.0"/>
+                    </columns>
+                </TableView>
+
+                <Button text="⬅️ Quay về Sảnh chờ" onAction="#onBackToLobby" styleClass="lobby-button" prefWidth="250"/>
+            </VBox>
+        </center>
+
+    </BorderPane>
+</StackPane>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.canvas.Canvas?>
+<?import java.net.URL?>
+
+<StackPane xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.oop.game.client.controllers.GameController"
+           styleClass="lobby-root-pane">
+
+    <stylesheets>
+        <URL value="@../assets/styles.css"/>
+    </stylesheets>
+
+    <children>
+        <BorderPane>
+            <top>
+                <GridPane style="-fx-background-color: rgba(0,0,0,0.7); -fx-padding: 15;">
+                    <children>
+                        <!-- Đối thủ -->
+                        <VBox alignment="CENTER" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS">
+                            <children>
+                                <Label fx:id="opponentLabel" text="Đối thủ"
+                                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                                <Label fx:id="opponentScore" text="0"
+                                       style="-fx-font-size: 32px; -fx-text-fill: white;"/>
+                                <HBox fx:id="opponentPowerUpsBox" alignment="CENTER" spacing="5" minHeight="30"/>
+                            </children>
+                        </VBox>
+
+                        <VBox alignment="CENTER" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
+                            <children>
+                                <Label fx:id="timerLabel" text="15"
+                                       style="-fx-font-size: 40px; -fx-text-fill: #FF5252; -fx-font-weight: bold;"/>
+                                <Label fx:id="turnIndicatorLabel" text="Đợi đối thủ..."
+                                       style="-fx-font-size: 14px; -fx-text-fill: #cccccc;"/>
+                            </children>
+                        </VBox>
+
+                        <VBox alignment="CENTER" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS">
+                            <children>
+                                <Label fx:id="playerLabel" text="Bạn"
+                                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                                <Label fx:id="playerScore" text="0"
+                                       style="-fx-font-size: 32px; -fx-text-fill: #4CAF50;"/>
+                                <HBox fx:id="playerPowerUpsBox" alignment="CENTER" spacing="5" minHeight="30"/>
+                            </children>
+                        </VBox>
+                    </children>
+
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="33.3"/>
+                        <ColumnConstraints percentWidth="33.3"/>
+                        <ColumnConstraints percentWidth="33.3"/>
+                    </columnConstraints>
+                </GridPane>
+            </top>
+
+            <!-- ======== PHẦN GIỮA: BẢNG PHI TIÊU ======== -->
+            <center>
+                <VBox alignment="CENTER" spacing="10">
+                    <children>
+                        <Label text="🎯 Bảng phi tiêu"
+                               style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #ffffff;"/>
+
+                        <StackPane fx:id="dartboardPane"
+                                   prefWidth="350" prefHeight="350"
+                                   style="-fx-background-color: rgba(0,0,0,0.3); -fx-background-radius: 10; -fx-padding: 5;">
+                            <children>
+                                <Canvas fx:id="dartboardCanvas"
+                                        width="350" height="350"
+                                        style="-fx-background-color: transparent;"/>
+                            </children>
+                        </StackPane>
+                    </children>
+                </VBox>
+            </center>
+
+            <bottom>
+                <VBox fx:id="controlsBox" alignment="CENTER" spacing="10"
+                      style="-fx-background-color: rgba(0,0,0,0.7); -fx-padding: 20;">
+                    <children>
+                        <HBox alignment="CENTER" spacing="10">
+                            <children>
+                                <Label text="Tọa độ X:" style="-fx-text-fill: white;"/>
+                                <TextField fx:id="xField" prefWidth="80" promptText="số nguyên"/>
+                                <Label text="Tọa độ Y:" style="-fx-text-fill: white;"/>
+                                <TextField fx:id="yField" prefWidth="80" promptText="số nguyên"/>
+                            </children>
+                        </HBox>
+
+                        <Button fx:id="throwButton" text="🎯 NÉM" onAction="#onThrowClicked"
+                                styleClass="lobby-button" prefWidth="250"/>
+                    </children>
+                </VBox>
+            </bottom>
+        </BorderPane>
+    </children>
+</StackPane>

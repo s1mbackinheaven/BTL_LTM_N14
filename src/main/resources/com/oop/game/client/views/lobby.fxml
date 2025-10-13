@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import java.net.URL?>
+
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.oop.game.client.controllers.LobbyController"
+           styleClass="lobby-root-pane">
+
+    <stylesheets>
+        <URL value="@../assets/styles.css"/>
+    </stylesheets>
+
+    <BorderPane>
+        <top>
+            <HBox alignment="CENTER_LEFT" spacing="15" styleClass="lobby-header">
+                <VBox>
+                    <Label fx:id="usernameLabel" text="PlayerUsername" styleClass="lobby-username-label"/>
+                    <Label fx:id="eloLabel" text="ELO: 1000" styleClass="lobby-elo-label"/>
+                </VBox>
+                <Label fx:id="statsLabel" text="Thắng: 0 / Thua: 0" styleClass="lobby-elo-label"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+                <Button fx:id="logoutButton" text="Đăng xuất" onAction="#onLogoutClicked" styleClass="logout-button"/>
+            </HBox>
+        </top>
+
+        <center>
+            <VBox alignment="TOP_CENTER" spacing="10" styleClass="lobby-main-panel">
+                <BorderPane.margin>
+                    <Insets top="40" bottom="40" left="40" right="40"/>
+                </BorderPane.margin>
+
+                <Label text="👥 Người Chơi Online" styleClass="lobby-title"/>
+
+                <ListView fx:id="playerListView" prefHeight="350"/>
+
+                <HBox alignment="CENTER" spacing="10">
+                    <padding>
+                        <Insets top="15"/>
+                    </padding>
+
+                    <Button fx:id="inviteButton" text="Mời Đấu" onAction="#onInviteClicked" styleClass="lobby-button"
+                            prefWidth="200"/>
+                    <Button fx:id="leaderboardButton" text="Bảng Xếp Hạng" onAction="#onLeaderboardClicked"
+                            styleClass="lobby-button" prefWidth="200"/>
+                </HBox>
+            </VBox>
+        </center>
+    </BorderPane>
+
+</StackPane>
