@@ -44,7 +44,7 @@ public class ClientHandler implements Runnable {
     @Override
     public void run() {
         try (ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
-                ObjectInputStream input = new ObjectInputStream(socket.getInputStream())) {
+             ObjectInputStream input = new ObjectInputStream(socket.getInputStream())) {
 
             while (true) {
                 try {
@@ -139,6 +139,11 @@ public class ClientHandler implements Runnable {
         connectionManager.registerClient(player.getUsername(), objOP);
 
         OP(new LoginResponse(true, "Đăng nhập thành công", player), objOP);
+        // 🔥 Gửi danh sách người chơi online mới cho tất cả clients
+        List<PlayerInfoDTO> updatedList = mClient.getListUserOnline();
+        for (ObjectOutputStream clientOut : connectionManager.getAllClientStreams()) {
+            OP(new PlayerListResponse("SERVER", updatedList), clientOut);
+        }
     }
 
     private void handlerMoveReq(MoveRequest req, ObjectOutputStream objOP) {
@@ -172,13 +177,13 @@ public class ClientHandler implements Runnable {
             Player player2 = game.getPlayer2();
 
             OP(new GameStateUpdate("SERVER",
-                    new PlayerGameStateDTO(currentPlayer.getUsername(),
-                            currentPlayer.getCurrentScore(), currentPlayer.getPowerUpString(),
-                            currentPlayer.isMyTurn()),
+                            new PlayerGameStateDTO(currentPlayer.getUsername(),
+                                    currentPlayer.getCurrentScore(), currentPlayer.getPowerUpString(),
+                                    currentPlayer.isMyTurn()),
 
-                    new PlayerGameStateDTO(player2.getUsername(), player2.getCurrentScore(),
-                            player2.getPowerUpString(), player2.isMyTurn()),
-                    game.getColorBoard().ToDTO(result.finalScore, hasColorSwapOccurred(req.getUsedPowerUp(), result))),
+                            new PlayerGameStateDTO(player2.getUsername(), player2.getCurrentScore(),
+                                    player2.getPowerUpString(), player2.isMyTurn()),
+                            game.getColorBoard().ToDTO(result.finalScore, hasColorSwapOccurred(req.getUsedPowerUp(), result))),
                     objOP);
 
             // Game sẽ tự động kết thúc trong processPlayerThrow nếu đạt 16 điểm
@@ -284,6 +289,14 @@ public class ClientHandler implements Runnable {
 
                 System.out.println("🎮 Trận đấu bắt đầu giữa " + inviterUN + " và " + responderUN + " (Session: "
                         + sessionId + ")");
+                // ✅ Gửi GameStart cho cả 2 client (bỏ qua powerup)
+                connectionManager.sendMessageToClient(inviterUN,
+                        new com.oop.game.server.protocol.GameStart("SERVER", responderUN, null, true));
+
+                connectionManager.sendMessageToClient(responderUN,
+                        new com.oop.game.server.protocol.GameStart("SERVER", inviterUN, null, false));
+
+                System.out.println("🚀 Đã gửi GameStart đến " + inviterUN + " và " + responderUN);
 
             } catch (Exception e) {
                 System.err.println("❌ Lỗi khi tạo trận đấu: " + e.getMessage());
