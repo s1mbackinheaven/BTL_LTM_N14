@@ -17,7 +17,11 @@ public class LoginResponse extends Message {
         super(MessageType.LOGIN_RESPONSE, "SYSTEM");
         this.success = success;
         this.errorMessage = errorMessage;
-        this.playerInfo = new PlayerInfoDTO(player);
+        if (player != null) {
+            this.playerInfo = new PlayerInfoDTO(player);
+        } else {
+            this.playerInfo = null; // tránh lỗi NullPointerException (t sửa để còn đăng nhập được)
+        }
     }
 
     public boolean isSuccess() {
