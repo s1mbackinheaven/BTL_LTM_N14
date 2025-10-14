@@ -2,8 +2,8 @@ package com.oop.game.server.core;
 
 import java.util.Random;
 
-import com.oop.game.server.enums.Color;
-import com.oop.game.server.enums.PowerUp;
+import com.oop.game.JAR.enums.Color;
+import com.oop.game.JAR.enums.PowerUp;
 
 /**
  * Engine xử lý logic 1 lượt ném phi tiêu

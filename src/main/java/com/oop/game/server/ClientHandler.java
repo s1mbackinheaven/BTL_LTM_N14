@@ -4,19 +4,20 @@ import com.oop.game.server.core.GameSession;
 import com.oop.game.server.core.Player;
 import com.oop.game.server.core.GameEngine;
 import com.oop.game.server.DAO.UserDAO;
-import com.oop.game.server.dto.PlayerGameStateDTO;
-import com.oop.game.server.dto.PlayerInfoDTO;
-import com.oop.game.server.enums.AuthStatus;
-import com.oop.game.server.enums.PowerUp;
+import com.oop.game.JAR.dto.PlayerGameStateDTO;
+import com.oop.game.JAR.dto.PlayerInfoDTO;
+import com.oop.game.JAR.enums.AuthStatus;
+import com.oop.game.JAR.enums.PowerUp;
 import com.oop.game.server.managers.ClientManager;
 import com.oop.game.server.models.User;
-import com.oop.game.server.protocol.ErrorMessage;
-import com.oop.game.server.protocol.GameStateUpdate;
-import com.oop.game.server.protocol.request.*;
-import com.oop.game.server.protocol.Message;
-import com.oop.game.server.protocol.response.LoginResponse;
-import com.oop.game.server.protocol.response.PlayerListResponse;
-import com.oop.game.server.protocol.response.InviteResponse;
+import com.oop.game.JAR.protocol.ErrorMessage;
+import com.oop.game.JAR.protocol.GameStateUpdate;
+import com.oop.game.JAR.protocol.request.*;
+import com.oop.game.JAR.protocol.Message;
+import com.oop.game.JAR.protocol.response.LoginResponse;
+import com.oop.game.JAR.protocol.response.PlayerListResponse;
+import com.oop.game.JAR.protocol.response.RegisRes;
+import com.oop.game.JAR.protocol.response.InviteResponse;
 import com.oop.game.server.managers.GameSessionManager;
 import com.oop.game.server.managers.ClientConnectionManager;
 
@@ -49,6 +50,7 @@ public class ClientHandler implements Runnable {
             while (true) {
                 try {
                     Object msg = input.readObject();
+                    System.out.println("🔍 Nhận được message từ client: ");
                     handlerMes(msg, output);
                 } catch (ClassNotFoundException e) {
                     System.err.println("❌ Class not found: " + e.getMessage());
@@ -91,9 +93,32 @@ public class ClientHandler implements Runnable {
         } else if (obj instanceof LeaderboardRequest) {
             // bảng xếp hạng dựa trên elo
             handlerLeaderboardReq((LeaderboardRequest) obj, objOP);
+        } else if (obj instanceof RegisterReq) {
+            handlerRegisReq((RegisterReq) obj, objOP);
         } else {
             System.err.println("⚠️ Nhận được message không xác định từ client: " + obj);
         }
+    }
+
+    // -----------------REQ -------------------
+
+    private void handlerRegisReq(RegisterReq req, ObjectOutputStream objOP) {
+        UserDAO userDAO = new UserDAO();
+        String un = req.getUsername();
+        String pw = req.getPassword();
+
+        if (un == null || pw == null) {
+            OP(new LoginResponse(false, "Vui lòng nhập đủ thông tin", null), objOP);
+            return;
+        }
+
+        if (userDAO.registerUser(un, pw)) {
+            OP(new RegisRes(true, "Res suscces"), objOP);
+        } else
+            OP(new RegisRes(false, "Res flase"), objOP);
+
+        return;
+
     }
 
     private void handlerLoginReq(LoginRequest req, ObjectOutputStream objOP) {
@@ -191,6 +216,27 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    private void handlerLeaderboardReq(LeaderboardRequest req, ObjectOutputStream objOP) {
+
+        // trả về bảng xếp hạng dựa trên elo
+
+        UserDAO ud = new UserDAO();
+
+        try {
+            List<User> players = ud.getAllUserByOrder("elo");
+
+            List<PlayerInfoDTO> p = new ArrayList<>();
+
+            for (var i : players) {
+                p.add(new PlayerInfoDTO(i));
+            }
+            OP(new PlayerListResponse("SERVER", p), objOP);
+        } catch (Exception e) {
+            OP(new ErrorMessage("SERVER", "502", "Lỗi không xác định hihi"), objOP);
+        }
+
+    }
+
     private void handlerPlayerListReq(PlayerListRequest req, ObjectOutputStream objOP) {
         OP(new PlayerListResponse(req.getSenderUN(), mClient.getListUserOnline()), objOP);
     }
@@ -246,6 +292,7 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    // --------------- Respone ----------------
     private void handlerInviteResponse(InviteResponse response, ObjectOutputStream objOP) {
 
         String responderUN = response.getSenderUN();
@@ -300,30 +347,7 @@ public class ClientHandler implements Runnable {
         }
     }
 
-    private void handlerLeaderboardReq(LeaderboardRequest req, ObjectOutputStream objOP) {
-
-        // trả về bảng xếp hạng dựa trên elo
-
-        UserDAO ud = new UserDAO();
-
-        try {
-            List<User> players = ud.getAllUserByOrder("elo");
-
-            List<PlayerInfoDTO> p = new ArrayList<>();
-
-            for (var i : players) {
-                p.add(new PlayerInfoDTO(i));
-            }
-            OP(new PlayerListResponse("SERVER", p), objOP);
-        } catch (Exception e) {
-            OP(new ErrorMessage("SERVER", "502", "Lỗi không xác định hihi"), objOP);
-        }
-
-    }
-
-    /**
-     * Kiểm tra có hoán đổi màu xảy ra không
-     */
+    // ----------------------LOGIC ---------------------------
     private boolean hasColorSwapOccurred(PowerUp usedPowerUp, GameEngine.ThrowResult result) {
         // Hoán đổi xảy ra khi:
         // 1. Sử dụng phụ trợ SWAP_OPPONENT_COLORS
@@ -331,9 +355,6 @@ public class ClientHandler implements Runnable {
         return (usedPowerUp == PowerUp.SWAP_OPPONENT_COLORS) || (result.hitColor != null);
     }
 
-    /**
-     * Cleanup khi client disconnect
-     */
     private void cleanupOnDisconnect() {
         if (currentPlayer != null) {
             // Nếu đang trong trận đấu, kết thúc trận đấu

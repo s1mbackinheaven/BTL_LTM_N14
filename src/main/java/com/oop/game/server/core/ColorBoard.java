@@ -2,8 +2,8 @@ package com.oop.game.server.core;
 
 import java.util.*;
 
-import com.oop.game.server.dto.ColorBoardStateDTO;
-import com.oop.game.server.enums.Color;
+import com.oop.game.JAR.dto.ColorBoardStateDTO;
+import com.oop.game.JAR.enums.Color;
 
 /**
  * Quản lý bảng ném phi tiêu hình chữ thập với 5 vùng màu
@@ -90,7 +90,7 @@ public class ColorBoard {
     }
 
     public ColorBoardStateDTO ToDTO(int lastScoreGained, boolean hasRecentSwap) {
-        
+
         // Lấy danh sách màu đang hiện
         List<String> visibleColorNames = new ArrayList<>();
 

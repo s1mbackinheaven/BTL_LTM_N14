@@ -1,6 +1,6 @@
 package com.oop.game.server.DAO;
 
-import com.oop.game.server.enums.AuthStatus;
+import com.oop.game.JAR.enums.AuthStatus;
 import com.oop.game.server.models.User;
 
 import java.sql.*;

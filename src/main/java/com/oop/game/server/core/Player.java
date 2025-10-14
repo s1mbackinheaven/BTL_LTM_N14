@@ -1,6 +1,6 @@
 package com.oop.game.server.core;
 
-import com.oop.game.server.enums.PowerUp;
+import com.oop.game.JAR.enums.PowerUp;
 import com.oop.game.server.models.User;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package com.oop.game.server.managers;
 
 import com.oop.game.server.core.Player;
-import com.oop.game.server.dto.PlayerInfoDTO;
+import com.oop.game.JAR.dto.PlayerInfoDTO;
 
 import java.util.ArrayList;
 import java.util.List;
