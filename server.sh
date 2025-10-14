@@ -6,6 +6,6 @@ echo "🚀 Starting Game Server..."
 echo "🔨 Compiling project..."
 mvn clean compile
 
-# Chạy server
+# Chạy server với đầy đủ dependencies
 echo "🖥️ Starting server on port 3009..."
-java -cp target/classes com.oop.game.server.ServerMain
+mvn exec:java -Dexec.mainClass="server.ServerMain"
