@@ -18,6 +18,22 @@
           </config>
         </ContributedStateBase>
       </target>
+      <target name="WSL2" type="wsl" uuid="aa395770-30ef-4360-8a9a-7ca674dbbfac">
+        <config>
+          <option name="distributionMsId" value="Debian" />
+        </config>
+        <ContributedStateBase type="JavaLanguageRuntime">
+          <config>
+            <option name="homePath" value="//wsl$/Debian/usr/lib/jvm/temurin-21-jdk-amd64" />
+          </config>
+        </ContributedStateBase>
+        <ContributedStateBase type="MavenRuntime">
+          <config>
+            <option name="homePath" value="/usr/share/maven" />
+            <option name="versionString" value="3.6.3" />
+          </config>
+        </ContributedStateBase>
+      </target>
     </targets>
   </component>
 </project>

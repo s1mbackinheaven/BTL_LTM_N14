@@ -1,14 +1,12 @@
 package server.models;
 
+import java.sql.Time;
 import java.sql.Timestamp;
 
 public class User {
     private int id; // id
     private String username; // tên tài khoản
     private String password; // mật khẩu
-    private int elo; // điểm elo
-    private int totalWins; // tổng số trận thắng
-    private int totalLosses; // tổng số trận thua
     private Timestamp createdAt; // thời gian tạo acc
 
     // Constructors
@@ -24,8 +22,7 @@ public class User {
         this.password = password;
     }
 
-    public User(int id, String username, String password, int elo, int totalWins, int totalLosses,
-            Timestamp createdAt) {
+    public User(int id, String username, String password, Timestamp createdAt) {
         this.id = id;
         this.username = username;
         this.password = password;

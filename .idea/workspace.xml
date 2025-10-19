@@ -5,47 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31c5998e-355f-4adf-a9d1-bbf289ed1706" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/enums/PlayerStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/protocol/request/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/protocol/response/TestRes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/ClientHandle/Handler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/ClientHandle/RegisHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/enums/UserStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/models/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/remote-targets.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/remote-targets.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/client/model/save.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/client/save.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/client/ui/save.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/DAO/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/ColorBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/ColorBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/GameSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/GameSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/core/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/dto/ColorBoardStateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/dto/ColorBoardStateDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/dto/LeaderboardEntryDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/dto/LeaderboardEntryDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/dto/PlayerGameStateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/dto/PlayerGameStateDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/dto/PlayerInfoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/dto/PlayerInfoDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/enums/AuthStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/enums/AuthStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/enums/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/enums/Color.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/enums/GameEndReason.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/enums/GameEndReason.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/enums/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/enums/MessageType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/enums/PlayerStatus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/enums/PowerUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/enums/PowerUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/managers/ClientConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/managers/ClientConnectionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/managers/ClientManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/server/managers/ClientManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/ErrorMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/protocol/ErrorMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/GameEnd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/protocol/GameEnd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/GameStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/protocol/GameStart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/GameStateUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/protocol/GameStateUpdate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/LeaderboardData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/protocol/LeaderboardData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/protocol/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/MoveResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/protocol/MoveResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/request/InviteRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/protocol/request/InviteRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/request/LeaderboardRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/protocol/request/LeaderboardRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/request/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/protocol/request/LoginRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/request/MoveRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/protocol/request/MoveRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/request/PlayerListRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/protocol/request/PlayerListRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/response/GameStartMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/protocol/response/GameStartMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/response/InviteResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/protocol/response/InviteResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/response/LoginResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/protocol/response/LoginResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/response/PlayerListResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/oop/game/JAR/protocol/response/PlayerListResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/DAO/UserDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +33,11 @@
     <option name="myRunOnSave" value="true" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="39465450f07cb001371055d98c4b48e105635164" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -98,7 +72,7 @@
   </component>
   <component name="ProblemsViewState">
     <option name="groupByToolId" value="true" />
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -120,7 +94,8 @@
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SHELLCHECK.PATH&quot;: &quot;C:\\Users\\dung0\\AppData\\Roaming\\JetBrains\\IdeaIC2025.1\\plugins\\Shell Script\\linux\\amd64\\shellcheck&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;C:\\Users\\DUNGCONY\\AppData\\Roaming\\JetBrains\\IntelliJIdea2025.2\\plugins\\Shell Script\\linux\\amd64\\shellcheck&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;dungcony&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
@@ -131,7 +106,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
@@ -189,7 +164,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26830.84" />
       </set>
     </attachedChunks>
   </component>
@@ -224,11 +199,28 @@
       <workItem from="1760349808212" duration="38000" />
       <workItem from="1760349941949" duration="12000" />
       <workItem from="1760349959435" duration="2000" />
+      <workItem from="1760688169369" duration="1626000" />
+      <workItem from="1760690038312" duration="90000" />
+      <workItem from="1760690142837" duration="39000" />
+      <workItem from="1760690201037" duration="2073000" />
+      <workItem from="1760697773486" duration="8000" />
+      <workItem from="1760856432314" duration="8388000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -256,7 +248,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/oop/game/server/models/Match.java</url>
           <line>43</line>
-          <properties class="com.oop.game.server.models.Match" method="getPlayer1Id">
+          <properties class="com.oop.game.server.models.Match">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
@@ -265,7 +257,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/oop/game/server/managers/GameSessionManager.java</url>
           <line>98</line>
-          <properties class="com.oop.game.server.managers.GameSessionManager" method="getActiveSessionCount">
+          <properties class="com.oop.game.server.managers.GameSessionManager">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
@@ -274,7 +266,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/oop/game/server/core/Player.java</url>
           <line>74</line>
-          <properties class="com.oop.game.server.core.Player" method="getId">
+          <properties class="com.oop.game.server.core.Player">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
@@ -283,11 +275,20 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/oop/game/server/managers/GameSessionManager.java</url>
           <line>76</line>
-          <properties class="com.oop.game.server.managers.GameSessionManager" method="getSessionIdByUsername">
+          <properties class="com.oop.game.server.managers.GameSessionManager">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/server/DAO/UserDAO.java</url>
+          <line>14</line>
+          <properties class="server.DAO.UserDAO" method="AuthenticateUser">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

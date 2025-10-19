@@ -39,7 +39,7 @@ public class ClientHandler implements Runnable {
     @Override
     public void run() {
         try (ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
-                ObjectInputStream input = new ObjectInputStream(socket.getInputStream())) {
+             ObjectInputStream input = new ObjectInputStream(socket.getInputStream())) {
 
             while (true) {
                 try {
@@ -87,8 +87,8 @@ public class ClientHandler implements Runnable {
         } else if (obj instanceof LeaderboardRequest) {
             // bảng xếp hạng dựa trên elo
             handlerLeaderboardReq((LeaderboardRequest) obj, objOP);
-        } else if (obj instanceof RegisReq) {
-            handlerRegisReq((RegisReq) obj, objOP);
+        } else if (obj instanceof RegisRequest) {
+            handlerRegisReq((RegisRequest) obj, objOP);
         } else {
             System.err.println("⚠️ Nhận được message không xác định từ client: " + obj);
         }
@@ -96,7 +96,7 @@ public class ClientHandler implements Runnable {
 
     // -----------------REQ -------------------
 
-    private void handlerRegisReq(RegisReq req, ObjectOutputStream objOP) {
+    private void handlerRegisReq(RegisRequest req, ObjectOutputStream objOP) {
         UserDAO userDAO = new UserDAO();
         String un = req.getUsername();
         String pw = req.getPassword();
@@ -107,11 +107,9 @@ public class ClientHandler implements Runnable {
         }
 
         if (userDAO.registerUser(un, pw)) {
-            OP(new RegisRes(true, "Res suscces"), objOP);
+            OP(new RegisRespone(true, "Res suscces"), objOP);
         } else
-            OP(new RegisRes(false, "Res flase"), objOP);
-
-        return;
+            OP(new RegisRespone(false, "Res flase"), objOP);
 
     }
 
@@ -160,7 +158,7 @@ public class ClientHandler implements Runnable {
         var loginRes = new LoginResponse(true, "Đăng nhập thành công");
         var playerIF = new PlayerInfoDTO(username, player.getElo(), player.getTotalWins(), player.getTotalLosses(),
                 player.isBusy());
-        loginRes.SetPlayerInfo(playerIF);
+        loginRes.setPlayerInfo(playerIF);
 
         OP(loginRes, objOP);
     }
