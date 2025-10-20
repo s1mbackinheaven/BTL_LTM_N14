@@ -11,11 +11,14 @@ import org.mindrot.jbcrypt.BCrypt;
 
 public class UserDAO extends DAO {
 
+    public UserDAO(Connection con) {
+        super(con);
+    }
+
     // Xác thực người dùng
     public UserStatus AuthenticateUser(String username, String password) {
         String sql = "SELECT password FROM users WHERE username = ?";
-        try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setString(1, username);
 
@@ -48,8 +51,7 @@ public class UserDAO extends DAO {
 
         String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
 
-        try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setString(1, username);
             ps.setString(2, hashedPassword);
@@ -71,8 +73,7 @@ public class UserDAO extends DAO {
 
         String sql = "SELECT * FROM users WHERE username = ?";
 
-        try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setString(1, username);
 
@@ -91,8 +92,7 @@ public class UserDAO extends DAO {
 
     public User GetUserById(int id) {
         String sql = "SELECT * FROM users WHERE id = ?";
-        try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, id);
 
@@ -112,8 +112,7 @@ public class UserDAO extends DAO {
         List<User> users = new ArrayList<>();
         String sql = "SELECT * FROM users ORDER BY " + order + " DESC";
 
-        try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(sql);
+        try (PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
@@ -126,100 +125,9 @@ public class UserDAO extends DAO {
         return users;
     }
 
-    public List<User> GetTopUsers(int limit) {
-        List<User> users = new ArrayList<>();
-        String sql = "SELECT * FROM users ORDER BY elo DESC, total_wins DESC LIMIT ?";
-
-        try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-
-            ps.setInt(1, limit);
-
-            try (ResultSet rs = ps.executeQuery()) {
-                while (rs.next()) {
-                    users.add(mapResultSetToUser(rs));
-                }
-            }
-
-        } catch (Exception e) {
-            System.err.println("Error getting top users: " + e.getMessage());
-        }
-        return users;
-    }
-
-    public boolean UpdateElo(String username, int newElo) {
-        String sql = "UPDATE users SET elo = ? WHERE username = ?";
-        try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-
-            ps.setInt(1, Math.max(0, newElo)); // Ensure ELO doesn't go below 0
-            ps.setString(2, username);
-
-            int rowsAffected = ps.executeUpdate();
-            return rowsAffected > 0;
-
-        } catch (Exception e) {
-            System.err.println("Error updating ELO: " + e.getMessage());
-            return false;
-        }
-    }
-
-    public boolean UpdateResultGame(String unWin, String unLoss, int eloGrant) {
-        String win = "UPDATE users SET total_wins = total_wins + 1, elo = elo + ? WHERE username = ?";
-        String loss = "UPDATE users SET total_losses = total_losses + 1, elo = GREATEST(0, elo - ?) WHERE username = ?";
-
-        Connection con = null;
-
-        try {
-            con = getConnection();
-
-            if(con == null)
-                return
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-        }
-    }
-
-    public boolean RecordWin(String username, int eloGained) {
-
-        try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-
-            ps.setInt(1, eloGained);
-            ps.setString(2, username);
-
-            int rowsAffected = ps.executeUpdate();
-            return rowsAffected > 0;
-
-        } catch (Exception e) {
-            System.err.println("Error recording win: " + e.getMessage());
-            return false;
-        }
-    }
-
-    public boolean RecordLoss(String username, int eloLost) {
-
-        try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-
-            ps.setInt(1, eloLost);
-            ps.setString(2, username);
-
-            int rowsAffected = ps.executeUpdate();
-            return rowsAffected > 0;
-
-        } catch (Exception e) {
-            System.err.println("Error recording loss: " + e.getMessage());
-            return false;
-        }
-    }
-
     private boolean userExists(String username) {
         String sql = "SELECT id FROM users WHERE username = ?";
-        try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setString(1, username);
 
@@ -233,26 +141,10 @@ public class UserDAO extends DAO {
         }
     }
 
-    public int getTotalUserCount() {
-        String sql = "SELECT COUNT(*) FROM users";
-        try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
-
-            if (rs.next()) {
-                return rs.getInt(1);
-            }
-
-        } catch (Exception e) {
-            System.err.println("Error getting user count: " + e.getMessage());
-        }
-        return 0;
-    }
 
     public boolean deleteUser(String username) {
         String sql = "DELETE FROM users WHERE username = ?";
-        try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setString(1, username);
 
@@ -270,8 +162,7 @@ public class UserDAO extends DAO {
                 (isWin ? "total_wins = total_wins + 1" : "total_losses = total_losses + 1") +
                 " WHERE id = ?";
 
-        try (Connection con = getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, newElo);
             ps.setInt(2, userId);
@@ -290,9 +181,7 @@ public class UserDAO extends DAO {
                 rs.getInt("id"),
                 rs.getString("username"),
                 rs.getString("password"),
-                rs.getInt("elo"),
-                rs.getInt("total_wins"),
-                rs.getInt("total_losses"),
-                rs.getTimestamp("created_at"));
+                rs.getTimestamp("create_at")
+        );
     }
 }

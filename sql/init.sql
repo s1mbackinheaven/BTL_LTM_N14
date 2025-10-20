@@ -1,19 +1,31 @@
 USE dungcony;
 
 -- Create users table
-CREATE TABLE IF NOT EXISTS users
+CREATE TABLE IF NOT EXISTS tbl_users
 (
-    id           INT PRIMARY KEY AUTO_INCREMENT,
-    username     VARCHAR(50) UNIQUE NOT NULL,
-    password     VARCHAR(255)       NOT NULL,
-    elo          INT       DEFAULT 1000,
-    total_wins   INT       DEFAULT 0,
-    total_losses INT       DEFAULT 0,
-    created_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    id         INT PRIMARY KEY AUTO_INCREMENT,
+    username   VARCHAR(20) UNIQUE NOT NULL,
+    password   VARCHAR(20)        NOT NULL,
+    email      VARCHAR(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE IF NOT EXISTS tbl_players
+(
+    user_id    INT UNIQUE,
+    name       NVARCHAR(50),
+    elo        INT DEFAULT 1000,
+    total_win  INT DEFAULT 0,
+    total_loss INT DEFAULT 0,
+
+    foreign key (user_id) references tbl_users (id)
+        on delete cascade
+        on update cascade
 );
 
 -- Create matches table
-CREATE TABLE IF NOT EXISTS matches
+CREATE TABLE IF NOT EXISTS tbl_matches
 (
     id            INT PRIMARY KEY AUTO_INCREMENT,
     player1_id    INT,
@@ -23,6 +35,14 @@ CREATE TABLE IF NOT EXISTS matches
     player2_score INT,
     elo_change    INT,
     played_at     TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (player1_id) REFERENCES users (id),
-    FOREIGN KEY (player2_id) REFERENCES users (id)
+    FOREIGN KEY (player1_id) REFERENCES tbl_players (user_id),
+    FOREIGN KEY (player2_id) REFERENCES tbl_players (user_id)
 );
+
+CREATE TABLE if not exists tbl_history
+(
+    id      int primary key auto_increment,
+    user_id int,
+    login   timestamp default current_timestamp,
+    FOREIGN KEY (user_id) REFERENCES tbl_users (id)
+)

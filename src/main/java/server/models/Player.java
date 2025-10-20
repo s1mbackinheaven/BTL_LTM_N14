@@ -6,14 +6,17 @@ public class Player {
 
     private String name; // tên game
     private int elo; // điểm elo
-    private int totalWins; // tổng số trận thắng
-    private int totalLosses; // tổng số trận thua
+    private int totalWin; // tổng số trận thắng
+    private int totalLoss; // tổng số trận thua
 
-    public Player(String name, int elo, int totalWins, int totalLosses) {
+    public Player() {
+    }
+
+    public Player(String name, int elo, int totalWin, int totalLoss) {
         this.name = name;
         this.elo = elo;
-        this.totalLosses = totalLosses;
-        this.totalWins = totalWins;
+        this.totalLoss = totalLoss;
+        this.totalWin = totalWin;
     }
 
     // Getters
@@ -21,35 +24,41 @@ public class Player {
         return user_id;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public int getElo() {
         return elo;
     }
 
-    public int getTotalWins() {
-        return totalWins;
+    public int getTotalWin() {
+        return totalWin;
     }
 
-    public int getTotalLosses() {
-        return totalLosses;
+    public int getTotalLoss() {
+        return totalLoss;
     }
-
 
     // Setters
-    public void setId(int id) {
-        this.id = id;
+    public void setName(String name) {
+        this.name = name;
     }
 
+    public void setId(int user_id) {
+        this.user_id = user_id;
+    }
 
     public void setElo(int elo) {
         this.elo = elo;
     }
 
-    public void setTotalWins(int totalWins) {
-        this.totalWins = totalWins;
+    public void setTotalWin(int totalWin) {
+        this.totalWin = totalWin;
     }
 
-    public void setTotalLosses(int totalLosses) {
-        this.totalLosses = totalLosses;
+    public void setTotalLoss(int totalLoss) {
+        this.totalLoss = totalLoss;
     }
 
 }
