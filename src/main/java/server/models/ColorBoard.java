@@ -1,9 +1,9 @@
-package server.core;
-
-import java.util.*;
+package server.models;
 
 import com.oop.game.JAR.dto.ColorBoardStateDTO;
 import com.oop.game.JAR.enums.Color;
+
+import java.util.*;
 
 /**
  * Quản lý bảng ném phi tiêu hình chữ thập với 5 vùng màu

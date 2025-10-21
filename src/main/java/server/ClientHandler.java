@@ -7,13 +7,10 @@ import com.oop.game.JAR.protocol.request.*;
 import com.oop.game.JAR.protocol.response.*;
 
 import server.DAO.UserDAO;
-import server.core.GameEngine;
-import server.core.GameSession;
-import server.core.Player;
 import server.managers.ClientConnectionManager;
 import server.managers.ClientManager;
 import server.managers.GameSessionManager;
-import server.models.User;
+import server.entities.User;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -27,7 +24,9 @@ public class ClientHandler implements Runnable {
     private final ClientManager mClient;
     private final GameSessionManager gameSessionManager;
     private final ClientConnectionManager connectionManager;
-    private Player currentPlayer; // Người chơi hiện tại trong session này
+    // private Player currentPlayer; // Người chơi hiện tại trong session này
+
+    // Controllers
 
     public ClientHandler(Socket socket) {
         this.socket = socket;
@@ -39,7 +38,7 @@ public class ClientHandler implements Runnable {
     @Override
     public void run() {
         try (ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
-             ObjectInputStream input = new ObjectInputStream(socket.getInputStream())) {
+                ObjectInputStream input = new ObjectInputStream(socket.getInputStream())) {
 
             while (true) {
                 try {
@@ -97,7 +96,6 @@ public class ClientHandler implements Runnable {
     // -----------------REQ -------------------
 
     private void handlerRegisReq(RegisRequest req, ObjectOutputStream objOP) {
-        UserDAO userDAO = new UserDAO();
         String un = req.getUsername();
         String pw = req.getPassword();
 

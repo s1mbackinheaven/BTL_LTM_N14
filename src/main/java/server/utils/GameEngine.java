@@ -1,9 +1,10 @@
-package server.core;
-
-import java.util.Random;
+package server.utils;
 
 import com.oop.game.JAR.enums.Color;
 import com.oop.game.JAR.enums.PowerUp;
+import server.models.ColorBoard;
+
+import java.util.Random;
 
 /**
  * Engine xử lý logic 1 lượt ném phi tiêu
@@ -24,9 +25,9 @@ public class GameEngine {
      * @return kết quả lượt ném
      */
     public static ThrowResult processThrow(int playerX, int playerY, int force,
-            ColorBoard colorBoard,
-            PowerUp[] activePowerUps,
-            boolean isOpponentTurn) {
+                                           ColorBoard colorBoard,
+                                           PowerUp[] activePowerUps,
+                                           boolean isOpponentTurn) {
 
         // Áp dụng phụ trợ ZERO_FORCE nếu có
         int actualForce = force;
@@ -119,7 +120,7 @@ public class GameEngine {
         public final boolean hasExtraTurn;
 
         public ThrowResult(int finalX, int finalY, Color hitColor,
-                int baseScore, int finalScore, boolean hasExtraTurn) {
+                           int baseScore, int finalScore, boolean hasExtraTurn) {
             this.finalX = finalX;
             this.finalY = finalY;
             this.hitColor = hitColor;

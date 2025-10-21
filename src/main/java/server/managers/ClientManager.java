@@ -2,7 +2,7 @@ package server.managers;
 
 import com.oop.game.JAR.dto.PlayerInfoDTO;
 
-import server.core.Player;
+import server.models.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ public class ClientManager {
         List<PlayerInfoDTO> pList = new ArrayList<>();
 
         for (Player p : listUserOnline)
-            pList.add(new PlayerInfoDTO(p.getUsername(), p.getElo(), p.getTotalWins(), p.getTotalLosses(), p.isBusy()));
+            pList.add(new PlayerInfoDTO(p.getname(), p.getElo(), p.getTotalWins(), p.getTotalLosses(), p.isBusy()));
 
         return pList;
     }
@@ -55,7 +55,7 @@ public class ClientManager {
 
     public Player getUserByName(String un) {
         for (Player i : listUserOnline) {
-            if (un.equals(i.getUsername()))
+            if (un.equals(i.getname()))
                 return i;
         }
 

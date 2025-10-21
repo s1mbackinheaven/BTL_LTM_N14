@@ -1,6 +1,7 @@
-package server.models;
+package server.entities;
 
-import java.sql.Time;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 
 public class User {
@@ -11,9 +12,11 @@ public class User {
     private Timestamp createdAt; // thời gian tạo acc
     private Timestamp last_login; // ghi lại log đăng nhập
 
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public User(ResultSet rs) throws SQLException {
+        this.id = rs.getInt("id");
+        this.username = rs.getString("username");
+        this.password = rs.getString("password");
+        this.createdAt = rs.getTimestamp("create_at");
     }
 
     public User(int id, String username, String password, Timestamp createdAt) {

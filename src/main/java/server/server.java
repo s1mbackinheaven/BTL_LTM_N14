@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class GameServer {
+public class server {
     private int port;
     private ServerSocket server;
 
-    public GameServer(int _port) {
+    public server(int _port) {
         this.port = _port;
     }
 

@@ -1,4 +1,4 @@
-package server.models;
+package server.entities;
 
 import java.sql.Timestamp;
 
@@ -10,6 +10,7 @@ public class Match {
     private int player1Score;
     private int player2Score;
     private int eloChange;
+    private boolean isEnd;
     private Timestamp playedAt;
 
     // Constructors
@@ -25,7 +26,7 @@ public class Match {
     }
 
     public Match(int id, int player1Id, int player2Id, int winnerId,
-            int player1Score, int player2Score, int eloChange, Timestamp playedAt) {
+            int player1Score, int player2Score, int eloChange, boolean isEnd, Timestamp playedAt) {
         this.id = id;
         this.player1Id = player1Id;
         this.player2Id = player2Id;
@@ -33,6 +34,7 @@ public class Match {
         this.player1Score = player1Score;
         this.player2Score = player2Score;
         this.eloChange = eloChange;
+        this.isEnd = isEnd;
         this.playedAt = playedAt;
     }
 
@@ -63,6 +65,10 @@ public class Match {
 
     public int getEloChange() {
         return eloChange;
+    }
+
+    public boolean isEnd() {
+        return isEnd;
     }
 
     public Timestamp getPlayedAt() {
@@ -96,6 +102,10 @@ public class Match {
 
     public void setEloChange(int eloChange) {
         this.eloChange = eloChange;
+    }
+
+    public void setEnd(boolean end) {
+        isEnd = end;
     }
 
     public void setPlayedAt(Timestamp playedAt) {

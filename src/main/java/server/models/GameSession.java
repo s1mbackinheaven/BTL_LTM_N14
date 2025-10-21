@@ -1,7 +1,8 @@
-package server.core;
+package server.models;
 
 import com.oop.game.JAR.enums.GameEndReason;
 import com.oop.game.JAR.enums.PowerUp;
+import server.utils.GameEngine;
 
 import java.util.*;
 

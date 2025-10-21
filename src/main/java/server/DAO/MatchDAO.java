@@ -4,40 +4,38 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import server.models.Match;
+import server.entities.Match;
 
 public class MatchDAO extends DAO {
 
-    public int createMatch(int player1Id, int player2Id) {
+    public MatchDAO(Connection con) {
+        super(con);
+    }
+
+    public boolean createMatch(int player1Id, int player2Id) {
+
         String sql = "INSERT INTO matches (player1_id, player2_id, player1_score, player2_score, elo_change) VALUES (?, ?, 0, 0, 0)";
 
-        try (Connection con = getConnection();
-                PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             ps.setInt(1, player1Id);
             ps.setInt(2, player2Id);
 
-            int rowsAffected = ps.executeUpdate();
-            if (rowsAffected > 0) {
-                try (ResultSet rs = ps.getGeneratedKeys()) {
-                    if (rs.next()) {
-                        return rs.getInt(1);
-                    }
-                }
-            }
+            return ps.executeUpdate() > 0;
+
 
         } catch (Exception e) {
             System.err.println("Error creating match: " + e.getMessage());
         }
-        return -1;
+        
+        return false;
     }
 
     public boolean finishMatch(int matchId, int winnerId, int winnerScore, int loserScore, int eloChange) {
 
         String sql = "UPDATE matches SET winner_id = ?, player1_score = ?, player2_score = ?, elo_change = ?, played_at = CURRENT_TIMESTAMP WHERE id = ?";
 
-        try (Connection con = getConnection();
-                PreparedStatement ps = con.prepareStatement(sql)) {
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
 
             Match match = getMatchById(matchId);
             if (match == null) {
@@ -69,8 +67,7 @@ public class MatchDAO extends DAO {
     public boolean finishMatchByLeaver(int matchId, int leaverId) {
         String sql = "UPDATE matches SET winner_id = ?, player1_score = ?, player2_score = ?, elo_change = 51, played_at = CURRENT_TIMESTAMP WHERE id = ?";
 
-        try (Connection con = getConnection();
-                PreparedStatement ps = con.prepareStatement(sql)) {
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
 
             // Get match to determine players
             Match match = getMatchById(matchId);
@@ -106,8 +103,7 @@ public class MatchDAO extends DAO {
     public Match getMatchById(int matchId) {
         String sql = "SELECT * FROM matches WHERE id = ?";
 
-        try (Connection con = getConnection();
-                PreparedStatement ps = con.prepareStatement(sql)) {
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, matchId);
 
@@ -127,8 +123,7 @@ public class MatchDAO extends DAO {
         List<Match> matches = new ArrayList<>();
         String sql = "SELECT * FROM matches WHERE player1_id = ? OR player2_id = ? ORDER BY played_at DESC";
 
-        try (Connection con = getConnection();
-                PreparedStatement ps = con.prepareStatement(sql)) {
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, playerId);
             ps.setInt(2, playerId);
@@ -149,8 +144,7 @@ public class MatchDAO extends DAO {
         List<Match> matches = new ArrayList<>();
         String sql = "SELECT * FROM matches WHERE winner_id IS NOT NULL ORDER BY played_at DESC LIMIT ?";
 
-        try (Connection con = getConnection();
-                PreparedStatement ps = con.prepareStatement(sql)) {
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setInt(1, limit);
 
@@ -169,9 +163,8 @@ public class MatchDAO extends DAO {
     public int getTotalMatchCount() {
         String sql = "SELECT COUNT(*) FROM matches WHERE winner_id IS NOT NULL";
 
-        try (Connection con = getConnection();
-                PreparedStatement ps = con.prepareStatement(sql);
-                ResultSet rs = ps.executeQuery()) {
+        try (PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
 
             if (rs.next()) {
                 return rs.getInt(1);

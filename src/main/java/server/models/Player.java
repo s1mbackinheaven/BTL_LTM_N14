@@ -1,64 +1,143 @@
 package server.models;
 
+import com.oop.game.JAR.enums.PowerUp;
+import server.entities.User;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Lưu thông tin cơ bản của người chơi trong hệ thống
+ * Bao gồm thông tin persistent (elo, thống kê) và temporary (trạng thái online)
+ */
 public class Player {
+    private int id;
+    private String name;
+    private int elo; // Điểm xếp hạng tổng
+    private int totalWins; // Tổng số trận thắng
+    private int totalLosses; // Tổng số trận thua
+    private boolean isOnline; // Trạng thái online
+    private boolean isBusy; // Đang trong trận đấu
 
-    private int user_id;
+    // Thông tin trong trận (temporary)
+    private int currentScore; // Điểm hiện tại trong trận
+    private List<PowerUp> availablePowerUps; // 3 phụ trợ được random
+    private boolean isMyTurn; // Lượt của mình hay không
 
-    private String name; // tên game
-    private int elo; // điểm elo
-    private int totalWin; // tổng số trận thắng
-    private int totalLoss; // tổng số trận thua
-
-    public Player() {
-    }
-
-    public Player(String name, int elo, int totalWin, int totalLoss) {
+    public Player(String name) {
         this.name = name;
-        this.elo = elo;
-        this.totalLoss = totalLoss;
-        this.totalWin = totalWin;
+        this.elo = 1000; // ELO khởi tạo mặc định
+        this.totalWins = 0;
+        this.totalLosses = 0;
+        this.isOnline = true;
+        this.isBusy = false;
+        this.currentScore = 0;
+        this.availablePowerUps = new ArrayList<>();
+        this.isMyTurn = false;
     }
 
-    // Getters
+    /**
+     * Reset trạng thái khi bắt đầu trận mới
+     */
+    public void resetForNewGame() {
+        this.currentScore = 0;
+        this.availablePowerUps.clear();
+        this.isMyTurn = false;
+    }
+
+    /**
+     * Cập nhật ELO sau trận đấu
+     *
+     * @param change Số ELO thay đổi (có thể âm hoặc dương)
+     * @param isWin  true nếu thắng, false nếu thua
+     */
+    public void updateElo(int change, boolean isWin) {
+        this.elo += change;
+        if (isWin) {
+            this.totalWins++;
+        } else {
+            this.totalLosses++;
+        }
+    }
+
+    // Getters và Setters
     public int getId() {
-        return user_id;
+        return id;
     }
 
-    public String getName() {
-        return this.name;
+    public String getname() {
+        return name;
     }
 
     public int getElo() {
         return elo;
     }
 
-    public int getTotalWin() {
-        return totalWin;
+    public int getTotalWins() {
+        return totalWins;
     }
 
-    public int getTotalLoss() {
-        return totalLoss;
+    public int getTotalLosses() {
+        return totalLosses;
     }
 
-    // Setters
-    public void setName(String name) {
-        this.name = name;
+    public boolean isOnline() {
+        return isOnline;
     }
 
-    public void setId(int user_id) {
-        this.user_id = user_id;
+    public boolean isBusy() {
+        return isBusy;
     }
 
-    public void setElo(int elo) {
-        this.elo = elo;
+    public int getCurrentScore() {
+        return currentScore;
     }
 
-    public void setTotalWin(int totalWin) {
-        this.totalWin = totalWin;
+    public List<PowerUp> getAvailablePowerUps() {
+        return availablePowerUps;
     }
 
-    public void setTotalLoss(int totalLoss) {
-        this.totalLoss = totalLoss;
+    public List<String> getPowerUpString() {
+        List<String> res = new ArrayList<>();
+        for (var i : availablePowerUps) {
+            res.add(i.name());
+        }
+        return res;
     }
 
+    public void setAvailablePowerUps(List<PowerUp> powerUps) {
+        this.availablePowerUps = powerUps;
+    }
+
+    public boolean isMyTurn() {
+        return isMyTurn;
+    }
+
+    public void setOnline(boolean online) {
+        this.isOnline = online;
+    }
+
+    public void setBusy(boolean busy) {
+        this.isBusy = busy;
+    }
+
+    public void setCurrentScore(int score) {
+        this.currentScore = score;
+    }
+
+    public void setMyTurn(boolean myTurn) {
+        this.isMyTurn = myTurn;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+
+        if (!(o instanceof Player))
+            return false;
+
+        Player p = (Player) o;
+        return this.name.equals(p.name);
+    }
 }

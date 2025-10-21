@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS tbl_matches
     player1_score INT,
     player2_score INT,
     elo_change    INT,
+    is_end BOOLEAN DEFAULT FALSE,
     played_at     TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (player1_id) REFERENCES tbl_players (user_id),
     FOREIGN KEY (player2_id) REFERENCES tbl_players (user_id)

@@ -4,21 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31c5998e-355f-4adf-a9d1-bbf289ed1706" name="Changes" comment="update code">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/769140f9-6739-4bd3-a356-34b1039ef00b.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/769140f9-6739-4bd3-a356-34b1039ef00b/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/769140f9-6739-4bd3-a356-34b1039ef00b/storage_v2/_src_/schema/mysql.osA4Bg.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/769140f9-6739-4bd3-a356-34b1039ef00b/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/769140f9-6739-4bd3-a356-34b1039ef00b/storage_v2/_src_/schema/sys.zb4BAA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/server/Controller/PlayerController.java" afterDir="false" />
+    <list default="true" id="31c5998e-355f-4adf-a9d1-bbf289ed1706" name="Changes" comment="&#10;update code">
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/controllers/GameController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/entities/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/enums/loginStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/services/users/LoginService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/services/users/RegisService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/utils/Hashing.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/server/utils/LoginResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/769140f9-6739-4bd3-a356-34b1039ef00b.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/769140f9-6739-4bd3-a356-34b1039ef00b.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.sh" beforeDir="false" afterPath="$PROJECT_DIR$/server.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sql/init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/init.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/DAO/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/DAO/DAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/ClientHandle/Handler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/ClientHandle/RegisHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/ClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/Controller/PlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/controllers/PlayerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/DAO/MatchDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/DAO/MatchDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/DAO/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/DAO/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/GameServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/ServerMain.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/core/ColorBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/models/ColorBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/core/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/utils/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/core/GameSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/models/GameSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/core/Player.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/enums/UserStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/enums/regisStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/managers/ClientManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/managers/ClientManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/managers/GameSessionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/managers/GameSessionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/models/Match.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/entities/Match.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/models/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/models/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/entities/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,11 +77,17 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/s1mbackinheaven/BTL_LTM_N14.git&quot;,
-    &quot;accountId&quot;: &quot;c9326a0b-d84b-41cd-83f8-06c22377341d&quot;
+    &quot;accountId&quot;: &quot;9f2fd2a5-e550-41f5-9e43-20eaaedbdc13&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/java/com/oop/game/server/protocol/ErrorMessage.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/server/ClientHandler.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/server/DAO/PlayerDAO.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/server/controllers/PlayerController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/server/controllers/UserController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/server/server.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/server/services/users/LoginService.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/server/services/users/RegisService.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -89,42 +115,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.ServerMain.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SHELLCHECK.PATH": "C:\\Users\\DUNGCONY\\AppData\\Roaming\\JetBrains\\IntelliJIdea2025.2\\plugins\\Shell Script\\linux\\amd64\\shellcheck",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "dungcony",
-    "ignore.virus.scanning.warn.message": "true",
-    "java.suggest.annotation.dependency": "false",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "//wsl.localhost/ubuntu-22.04/home/dungcony/BTL_LTM_N14",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "actions.on.save",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.ServerMain.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;C:\\Users\\DUNGCONY\\AppData\\Roaming\\JetBrains\\IntelliJIdea2025.2\\plugins\\Shell Script\\linux\\amd64\\shellcheck&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dungcony&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;java.suggest.annotation.dependency&quot;: &quot;false&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;//wsl.localhost/Debian/home/dungcony/LTM/BTL_LTM_N14/src/main/java/server/models&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RdControllerToolWindowsLayoutState" isNewUi="true">
     <layout>
       <window_info id="Bookmarks" side_tool="true" />
@@ -155,9 +181,15 @@
       <window_info anchor="right" id="Maven" order="4" weight="0.25" />
     </layout>
   </component>
+  <component name="ReadonlyStatusHandler">
+    <option name="SHOW_DIALOG" value="false" />
+  </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.oop.game.server.db" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="\\wsl.localhost\Debian\home\dungcony\LTM\BTL_LTM_N14\src\main\java\server\models" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="com.oop.game.server.core" />
@@ -214,7 +246,10 @@
       <workItem from="1760883004165" duration="72000" />
       <workItem from="1760930939023" duration="1526000" />
       <workItem from="1760942457013" duration="338000" />
-      <workItem from="1760945986480" duration="4312000" />
+      <workItem from="1760945986480" duration="9972000" />
+      <workItem from="1761018957881" duration="5877000" />
+      <workItem from="1761029964907" duration="9000" />
+      <workItem from="1761037324165" duration="1151000" />
     </task>
     <task id="LOCAL-00001" summary="update code">
       <option name="closed" value="true" />
@@ -224,7 +259,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760865937571</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="&#10;update code">
+      <option name="closed" value="true" />
+      <created>1760950510484</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1760950510484</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,7 +286,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update code" />
-    <option name="LAST_COMMIT_MESSAGE" value="update code" />
+    <MESSAGE value="&#10;update code" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;update code" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
